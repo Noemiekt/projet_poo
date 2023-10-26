@@ -1,8 +1,11 @@
 package controllers;
 
+import java.util.Random;
+
 public class GameControls {
 	String mot;
-	static int lettre1;
+	public int longueur = mot.length();
+	static int lettre1 = 0;
 	static int lettre2;
 	
 	public GameControls() {
@@ -13,22 +16,26 @@ public class GameControls {
 		setL2(lettre2);
 	}
 	
-	public int setCoord(int lettre1) {
-		 if (lettre1 < 0)
-				return 0;
-			return lettre1;
-		}
+	public int setCoord1(int lettre1) {
+		 return 0;
+	}
+	
+	public int setCoord2(int lettre2) {
+		Random random = new Random();
+        lettre2 = random.nextInt(longueur) + 1;
+        return lettre2;
+	}
 	
 	public int getL1() {
 		return this.lettre1;
 	}
 	public void setL1(int lettre1) {
-		this.lettre1 = setCoord(lettre1);
+		this.lettre1 = setCoord1(lettre1);
 	}
 	public int getL2() {
 		return this.lettre2;
 	}
 	public void setL2(int lettre2) {
-		this.lettre2 = setCoord(lettre2);
+		this.lettre2 = setCoord2(lettre2);
 	}
 }
