@@ -10,12 +10,11 @@ import java.util.Random;
 public class Dictionnary {
 	
 	
-    static public List<String> dictionary; // Liste stockant les mots du dictionnaire 
-    public Random random; // génerateur de nombres aléatoire 
+    static public List<String> dictionary =new ArrayList<>(); // Liste stockant les mots du dictionnaire 
+    public static Random random = new Random();; // génerateur de nombres aléatoire 
 
     // Constructeur de la classe Dictionary : le param : chemin vers le fichier dictionnaire  
     public Dictionnary(String fileName) {
-    	dictionary = new ArrayList<>();
     	loadWordsFromFile(fileName);
     }
     
@@ -52,7 +51,6 @@ public class Dictionnary {
             return null; // No word of the specified length found in the dictionary.
         }
         // Chosir un mot au hasard 
-        Random random = new Random();
         int randomIndex = random.nextInt(matchingWords.size());
         return matchingWords.get(randomIndex);
     		
