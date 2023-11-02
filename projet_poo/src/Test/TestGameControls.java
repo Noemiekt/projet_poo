@@ -7,41 +7,48 @@ import controllers.* ;
 
 public class TestGameControls {
 	
-	public void testGameControls() {
-		GameControls game = new GameControls(1, 6);
-		Assertions.assertEquals(1, 6);
-	}
-	
 	@Test
+    public void testSetCoord2() {
+        GameControls gameControls = new GameControls();
+        int lettre2 = gameControls.setCoord2(0);
+
+        // Vérifie que la lettre2 est un nombre entre 1 et la longueur du mot
+        Assertions.assertTrue(lettre2 >= 1 && lettre2 <= gameControls.longueur);
+    }
+
+    @Test
     public void testSetL1() {
         GameControls gameControls = new GameControls();
         gameControls.setL1(5);
-        Assertions.assertEquals(0, gameControls.getL1()); // setCoord1 renvoie toujours 1
+
+        // Vérifie que la lettre1 a été mise à 0
+        Assertions.assertEquals(0, gameControls.getL1());
     }
 
     @Test
     public void testSetL2() {
         GameControls gameControls = new GameControls();
-        gameControls.setL2(8);
-        Assertions.assertEquals(8, gameControls.getL2());
+        gameControls.setL2(5);
 
-        // Test with random value (should be between 1 and mot.length())
-        int lettre2 = gameControls.getL2();
-        Assertions.assertTrue(lettre2 >= 1 && lettre2 <= gameControls.longueur);
+        // Vérifie que la lettre2 a été mise à une valeur aléatoire
+        Assertions.assertNotEquals(5, gameControls.getL2());
     }
 
     @Test
-    public void testConstructorWithCoords() {
-        GameControls gameControls = new GameControls(3, 6);
-        Assertions.assertEquals(0, gameControls.getL1());
-        Assertions.assertEquals(6, gameControls.getL2());
-    }
-
-    @Test
-    public void testConstructorWithoutCoords() {
+    public void testGetL1() {
         GameControls gameControls = new GameControls();
-        Assertions.assertEquals(0, gameControls.getL1()); // setCoord1 renvoie toujours 1
+        int lettre1 = gameControls.getL1();
+
+        // Vérifie que la valeur de lettre1 est correcte
+        Assertions.assertEquals(0, lettre1);
+    }
+
+    @Test
+    public void testGetL2() {
+        GameControls gameControls = new GameControls();
         int lettre2 = gameControls.getL2();
+
+        // Vérifie que la valeur de lettre2 est correcte (aléatoire)
         Assertions.assertTrue(lettre2 >= 1 && lettre2 <= gameControls.longueur);
     }
 

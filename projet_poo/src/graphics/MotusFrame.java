@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Motusframe {
+public class MotusFrame {
     public static void main(String[] args) {
         JFrame homeFrame = createHomeFrame();
         homeFrame.setSize(800, 350); // Définir la taille de la fenêtre d'accueil

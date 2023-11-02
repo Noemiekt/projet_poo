@@ -3,9 +3,12 @@ package controllers;
 import java.util.Random;
 
 public class GameControls {
-	String mot;
-	public int longueur = mot.length();
-	static int lettre1 = 0;
+	static String mot = "bonjour";
+	public static int longueur = mot.length();
+	static int[] lettres = new int[longueur];
+	static int[] lettresBonPos = new int[longueur];
+	static int[] lettresMalPos = new int[longueur];
+	static int lettre1 = lettres[0];
 	static int lettre2;
 	
 	public GameControls() {
