@@ -9,7 +9,7 @@ public class TestGameControls {
 	
 	@Test
     public void testSetCoord2() {
-        GameControls gameControls = new GameControls();
+        GameControlsBegin gameControls = new GameControlsBegin();
         int lettre2 = gameControls.setCoord2(0);
 
         // Vérifie que la lettre2 est un nombre entre 1 et la longueur du mot
@@ -18,7 +18,7 @@ public class TestGameControls {
 
     @Test
     public void testSetL1() {
-        GameControls gameControls = new GameControls();
+        GameControlsBegin gameControls = new GameControlsBegin();
         gameControls.setL1(5);
 
         // Vérifie que la lettre1 a été mise à 0
@@ -27,7 +27,7 @@ public class TestGameControls {
 
     @Test
     public void testSetL2() {
-        GameControls gameControls = new GameControls();
+        GameControlsBegin gameControls = new GameControlsBegin();
         gameControls.setL2(5);
 
         // Vérifie que la lettre2 a été mise à une valeur aléatoire
@@ -36,7 +36,7 @@ public class TestGameControls {
 
     @Test
     public void testGetL1() {
-        GameControls gameControls = new GameControls();
+        GameControlsBegin gameControls = new GameControlsBegin();
         int lettre1 = gameControls.getL1();
 
         // Vérifie que la valeur de lettre1 est correcte
@@ -45,7 +45,7 @@ public class TestGameControls {
 
     @Test
     public void testGetL2() {
-        GameControls gameControls = new GameControls();
+        GameControlsBegin gameControls = new GameControlsBegin();
         int lettre2 = gameControls.getL2();
 
         // Vérifie que la valeur de lettre2 est correcte (aléatoire)
