@@ -38,7 +38,7 @@ public class Dictionnary {
     
 
     // Méthode sélectionnant aléatoirement un mot à partir du dictionnaire
-    static public  String selectRandomWord(int wordLength) {
+    static public String selectRandomWord(int wordLength) {
     	List<String> matchingWords = new ArrayList<>();
     	// on parcourt chaque mot de dictionnary 
         for (String word : dictionary) {
