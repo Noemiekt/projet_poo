@@ -10,7 +10,7 @@ import java.util.Random;
 public class Dictionnary {
 	
 	
-    public List<String> dictionary; // Liste stockant les mots du dictionnaire 
+    static public List<String> dictionary; // Liste stockant les mots du dictionnaire 
     public Random random; // génerateur de nombres aléatoire 
 
     // Constructeur de la classe Dictionary : le param : chemin vers le fichier dictionnaire  
@@ -38,8 +38,8 @@ public class Dictionnary {
     }
     
 
-    // Méthode sélectionnant aléatoirement un mot à partir du dictionnaire 
-    public String selectRandomWord(int wordLength) {
+    // Méthode sélectionnant aléatoirement un mot à partir du dictionnaire
+    static public  String selectRandomWord(int wordLength) {
     	List<String> matchingWords = new ArrayList<>();
     	// on parcourt chaque mot de dictionnary 
         for (String word : dictionary) {
