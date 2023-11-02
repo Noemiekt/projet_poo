@@ -7,7 +7,8 @@ public class GameControlsBegin{
 	static String fileName = "src/Test/dictionnaire.txt"; // Provide the path to your dictionary file
     static Dictionnary dictionary = new Dictionnary(fileName);
     static int wordLength = 4; 
-    static String mot = dictionary.selectRandomWord(wordLength);
+    public static String mot = dictionary.selectRandomWord(wordLength);
+//    static String mot = "chat";
 	public static int longueur = mot.length();
 	static int[] lettres = new int[longueur];
 	static int lettre1 = lettres[0];
