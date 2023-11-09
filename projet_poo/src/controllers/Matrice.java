@@ -1,7 +1,7 @@
 package controllers;
 
 public class Matrice extends GamesControls {
-    int[] lineVerification;
+    static int[] lineVerification;
 
     public Matrice() {
         this(new int[longueur]);
