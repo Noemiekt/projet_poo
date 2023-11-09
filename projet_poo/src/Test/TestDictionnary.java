@@ -6,9 +6,9 @@ public class TestDictionnary {
 	
 	public static void main(String[] args) {
 	
-		String fileName = "/Users/sallmonearmela/Documents/2A/Projet_POO/projet_poo/projet_poo/src/Test/dictionnaire.txt"; // Provide the path to your dictionary file
+		String fileName = "src/Test/dictionnaire.txt"; // Provide the path to your dictionary file
         Dictionnary dictionary = new Dictionnary(fileName);
-        int wordLength = 7; 
+        int wordLength = 4; 
         String selectedWord = dictionary.selectRandomWord(wordLength);
 
         if (selectedWord != null) {
