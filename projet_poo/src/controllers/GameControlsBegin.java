@@ -8,7 +8,7 @@ public class GameControlsBegin{
     static Dictionnary dictionary = new Dictionnary(fileName);
     static int wordLength = 4; 
 //    public static String mot = dictionary.selectRandomWord(wordLength);
-    public static String motdebase = "chat";
+    public static String motdebase = "caioa";
     public static String mot = motdebase.toUpperCase();
 	public static int longueur = mot.length();
 	static int[] lettres = new int[longueur];
