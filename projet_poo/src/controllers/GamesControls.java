@@ -3,8 +3,7 @@ package controllers;
 import java.util.ArrayList;
 
 public class GamesControls extends GameControlsBegin {
-    static String motJoueurBase = "chtz";
-    public static String motJoueur = motJoueurBase.toLowerCase();
+    public static String motJoueur = "CAAA";
     static int[] lettresBonPos;
     static int[] lettresMalPos;
 
@@ -53,12 +52,12 @@ public class GamesControls extends GameControlsBegin {
             if (lettre1 != lettre2) {
                 for (int j = 0; j < motJoueur.length(); j++) {
                     if (j != i && motJoueur.charAt(j) == lettre1) {
-                        positions.add(i);
+                        positions.add(j);  // Ajoute l'indice dans motJoueur plutôt que dans mot
                     }
                 }
             }
         }
-        return positions.stream().mapToInt(Integer::intValue).toArray(); // On transforme la liste en tableau
+        return positions.stream().mapToInt(Integer::intValue).toArray();
     }
 
     public int[] getBonPos() {
