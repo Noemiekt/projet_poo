@@ -3,7 +3,7 @@ package controllers;
 import java.util.ArrayList;
 
 public class GamesControls extends GameControlsBegin {
-    public static String motJoueur = "CAAA";
+    public static String motJoueur = "CZAAT";
     static int[] lettresBonPos;
     static int[] lettresMalPos;
 
@@ -45,20 +45,39 @@ public class GamesControls extends GameControlsBegin {
     // On cherche les lettres bonnes mais mal positionnées
     public int[] setMauvaiseEndroitLettre(int[] lettresMalPos) {
         ArrayList<Integer> positions = new ArrayList<>();
+
         for (int i = 0; i < longueur; i++) {
             char lettre1 = mot.charAt(i);
             char lettre2 = motJoueur.charAt(i);
 
             if (lettre1 != lettre2) {
+                int occurrences = countOccurrences(lettre1);
+
                 for (int j = 0; j < motJoueur.length(); j++) {
-                    if (j != i && motJoueur.charAt(j) == lettre1) {
-                        positions.add(j);  // Ajoute l'indice dans motJoueur plutôt que dans mot
+                    if (j != i && motJoueur.charAt(j) == lettre1 && occurrences > 0) {
+                        if (lettre1 != mot.charAt(j)) {
+                            positions.add(j);
+                            occurrences--;
+                        }
                     }
                 }
             }
         }
+
         return positions.stream().mapToInt(Integer::intValue).toArray();
     }
+
+    private int countOccurrences(char letter) {
+        int count = 0;
+        for (int i = 0; i < mot.length(); i++) {
+            if (mot.charAt(i) == letter) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
 
     public int[] getBonPos() {
         return this.lettresBonPos;

@@ -13,6 +13,7 @@ public class MotusFrame {
     }
 
     private static JFrame createHomeFrame() {
+    	
         JFrame frame = new JFrame("Acceuil");
         frame.setLayout(new BorderLayout());
 
@@ -107,11 +108,33 @@ public class MotusFrame {
         JButton restartButton = new JButton("Recommencer");
         restartButton.setForeground(new Color(0, 139, 139)); // Texte en bleu turquoise
         gameRightPanel.add(restartButton);
+        
+        // Ajouter un écouteur d'événements au bouton "Recommencer"
+        restartButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Code à exécuter lors du clic sur le bouton "Recommencer"
+                frame.dispose(); // Ferme la fenêtre de jeu actuelle
+                JFrame homeFrame = createHomeFrame(); // Crée et affiche une nouvelle fenêtre d'accueil
+                homeFrame.setSize(800, 350);
+                homeFrame.setVisible(true); // Rend la nouvelle fenêtre d'accueil visible
+
+            }
+        });
+        
 
         // Bouton "Quitter"
         JButton quitButton = new JButton("Quitter");
         quitButton.setForeground(new Color(0, 139, 139)); // Texte en bleu turquoise
         gameRightPanel.add(quitButton);
+        // Ajouter un écouteur d'événements au bouton "Quitter"
+        quitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Code à exécuter lors du clic sur le bouton "Quitter"
+                System.exit(0); // Ferme l'application
+            }
+        });
 
         JSplitPane gameSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, gameLeftPanel, gameRightPanel);
         gameSplitPane.setResizeWeight(0.5);
