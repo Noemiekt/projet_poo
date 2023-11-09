@@ -1,0 +1,9 @@
+À faire :
+
+- mettre en place le temps
+- ajouter des options :
+	- aider l'utilisateur au début
+	- page d'acceuil 
+	- 
+	
+- 
