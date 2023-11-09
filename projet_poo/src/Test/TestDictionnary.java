@@ -17,5 +17,4 @@ public class TestDictionnary {
             System.out.println("No word of the specified length found in the dictionary.");
         }
 }
-
 }
