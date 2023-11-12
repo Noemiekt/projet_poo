@@ -2,6 +2,8 @@ package controllers;
 
 public class Matrice extends GamesControls {
     public static int[] lineVerification;
+	public static int[] lineRightPlaced;
+	
 
     public Matrice() {
         this(new int[longueur]);
@@ -9,6 +11,7 @@ public class Matrice extends GamesControls {
 
     public Matrice(int[] tableau) {
         settab(tableau);
+        settab_right_placed(tableau);
     }
 
     public int[] settab(int[] lineVerification) {
@@ -29,5 +32,21 @@ public class Matrice extends GamesControls {
         }
 
         return this.lineVerification;
+    }
+    
+   
+    public int[] settab_right_placed(int[] lineRightPlaced){
+    	
+    	this.lineRightPlaced = new int[longueur];
+    	
+    	for (int i = 0; i < longueur; i++) {
+            if ((lineVerification[i]==2)) {
+                this.lineRightPlaced[i] = 1;
+            }
+            else if (lineVerification[i]==1) {
+            	this.lineRightPlaced[i] = 0;
+            }
+        }
+    	return this.lineRightPlaced; 
     }
 }
