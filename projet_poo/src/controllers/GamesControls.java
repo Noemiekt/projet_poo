@@ -3,7 +3,7 @@ package controllers;
 import java.util.ArrayList;
 
 public class GamesControls extends GameControlsBegin {
-    public static String motJoueur = "CZAAT";
+    public static String motJoueur = "CACA";
     static int[] lettresBonPos;
     static int[] lettresMalPos;
 

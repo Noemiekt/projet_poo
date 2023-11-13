@@ -4,15 +4,17 @@ import controllers.Matrice;
 
 public class Tableau extends Matrice {
 	
+	static Matrice mat = new Matrice();
+	
 	public static char[][] TabInput; //Tableau stockant le mot saisi
 	public static int[][] TabVerification;
 	public static int[][] TabRightPlaced;
-	public static int currentAttempt;
-	public static int[] currentLineRightPlaced = lineVerification ;
+	public static int currentAttempt = 0;
+	public static int[] currentLineRightPlaced = mat.lineRightPlaced ;
+	
 	
 	// Initialiser la grille de la bonne taille
 	public Tableau(int longueur) {
-		
 		TabInput = new char[8][longueur];
 		TabVerification = new int[8][longueur];
 		TabRightPlaced = new int[8][longueur];
@@ -25,7 +27,7 @@ public class Tableau extends Matrice {
                 TabRightPlaced[i][j] = 0;
             }
         }
-        currentAttempt = 0;
+        currentAttempt = 1;
 	}
 	
 	public boolean addAttempt(String motJoueur){
@@ -49,20 +51,26 @@ public class Tableau extends Matrice {
 	
 	public void updateTabRightPlaced() {
 		//Si c'est le premier essai on copie lineRightPlaced dans le tableau  
-		if(currentAttempt == 0) {
-			System.arraycopy(currentLineRightPlaced, 0, TabRightPlaced[currentAttempt], 0, currentLineRightPlaced.length);
-		} else {
-			for(int i =0; i < longueur ; i++) {
-				//Si la lettre bien place dans l'essai précédent on la garde
-				if(TabRightPlaced[currentAttempt-1][i]==1) {
-					TabRightPlaced[currentAttempt][i] = 1;
-				} else {
-					//Sinon on utilise la valeur de lineRightPlaced
-					TabRightPlaced[currentAttempt][i] = currentLineRightPlaced[i];
+		
+		while(currentAttempt < 8) {
+			if(currentAttempt == 1) {
+				System.arraycopy(currentLineRightPlaced, 0, TabRightPlaced[currentAttempt], 0, currentLineRightPlaced.length);
+				
+			} else {
+				for(int i = 0; i < longueur ; i++) {
+					//Si la lettre bien place dans l'essai précédent on la garde
+					if(TabRightPlaced[currentAttempt-1][i]==1) {
+						TabRightPlaced[currentAttempt][i] = 1;
+					} else {
+						//Sinon on utilise la valeur de lineRightPlaced
+						TabRightPlaced[currentAttempt][i] = currentLineRightPlaced[i];
+					}
 				}
 			}
+			currentAttempt++;
+			
 		}
-		currentAttempt++;
+		
 	}
 	
 	
@@ -107,6 +115,12 @@ public class Tableau extends Matrice {
                 System.out.print(TabRightPlaced[i][j] + " ");
             }
             System.out.println();
+        }
+    }
+	
+	public void printlineVerification() {
+        for (int i = 0; i < longueur; i++) { 
+                System.out.print(mat.lineVerification[i] + " ");
         }
     }
 	

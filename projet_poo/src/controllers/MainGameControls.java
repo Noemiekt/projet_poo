@@ -29,6 +29,7 @@ public class MainGameControls{
 		
 		Matrice mat;
 		mat = new Matrice();
+		
 		System.out.printf("le tableau est ");
 		for (int i = 0; i < mat.longueur; i++) {
 			System.out.print(mat.lineVerification[i] + " ");

@@ -6,24 +6,78 @@ public class TableauTest {
 	
 	public static void main(String[] args) {
 	 
-	
-	    Tableau tableau = new Tableau(5); //Supposons le mot à deviner à 5 lettres 
+		// Création d'une instance de Tableau pour un mot de 4 lettres
+        Tableau tableau = new Tableau(4);
 
-        // Simuler quelques tentatives avec des mots de longueur 5.
-	    
-        tableau.addAttempt("abcde");
-        Matrice.lineVerification = new int[]{2, 1, 0, 0, 0}; // Simuler la vérification de la première tentative.
+        // Première tentative avec le mot "coco"
+        tableau.addAttempt("coco");
         tableau.updateTabRightPlaced();
-
-        // Afficher les états des tableaux après les tentatives.
-        System.out.println("Tableau des mots saisis (TabInput) : ");
+        // Affiche l'état actuel du tableau
         tableau.printTabInput();
-
-        System.out.println("\nTableau de vérification des positions des lettres (TabVerification) : ");
         tableau.printTabVerification();
-
-        System.out.println("\nTableau des lettres bien positionnées (TabRightPlaced) : ");
         tableau.printTabRightPlaced();
+
+        // Deuxième tentative avec le mot "coca"
+        tableau.addAttempt("coca");
+        tableau.updateTabRightPlaced();
+        // Affiche l'état actuel du tableau
+        tableau.printTabInput();
+        tableau.printTabVerification();
+        tableau.printTabRightPlaced();
+
+        // Troisième tentative avec le mot "caca"
+        tableau.addAttempt("caaa");
+        tableau.updateTabRightPlaced();
+        // Affiche l'état actuel du tableau
+        tableau.printTabInput();
+        tableau.printTabVerification();
+        tableau.printTabRightPlaced();
+        
+     // Troisième tentative avec le mot "caca"
+        tableau.addAttempt("cooa");
+        tableau.updateTabRightPlaced();
+        // Affiche l'état actuel du tableau
+        tableau.printTabInput();
+        tableau.printTabVerification();
+        tableau.printTabRightPlaced();
+     
+        // Troisième tentative avec le mot "caca"
+        tableau.addAttempt("cooo");
+        tableau.updateTabRightPlaced();
+        // Affiche l'état actuel du tableau
+        tableau.printTabInput();
+        tableau.printTabVerification();
+        tableau.printTabRightPlaced();
+        
+        // Troisième tentative avec le mot "caca"
+        tableau.addAttempt("cooo");
+        tableau.updateTabRightPlaced();
+        // Affiche l'état actuel du tableau
+        tableau.printTabInput();
+        tableau.printTabVerification();
+        tableau.printTabRightPlaced();
+        
+        
+        // Troisième tentative avec le mot "caca"
+        tableau.addAttempt("cooo");
+        tableau.updateTabRightPlaced();
+        // Affiche l'état actuel du tableau
+        tableau.printTabInput();
+        tableau.printTabVerification();
+        tableau.printTabRightPlaced();
+        
+        // Troisième tentative avec le mot "caca"
+        tableau.addAttempt("caca");
+        tableau.updateTabRightPlaced();
+        // Affiche l'état actuel du tableau
+        tableau.printTabInput();
+        tableau.printTabVerification();
+        tableau.printTabRightPlaced();
+        
+        
+        
+        
+        
         
 		}
 }
