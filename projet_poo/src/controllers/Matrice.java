@@ -1,9 +1,11 @@
 package controllers;
+import graphics.*;
 
 public class Matrice extends GamesControls {
     public static int[] lineVerification;
 	public static int[] lineRightPlaced;
-	
+
+	private MotusGameFrameUtil motusgameframeutil;
 
     public Matrice() {
         this(new int[longueur]);
@@ -17,13 +19,13 @@ public class Matrice extends GamesControls {
     public int[] settab(int[] lineVerification) {
         this.lineVerification = new int[longueur];  // Réinitialise lineVerification ici
         for (int i = 0; i < longueur; i++) {
-            for (int j = 0; j < lettresBonPos.length; j++) {
-                if (i == lettresBonPos[j]) {
+            for (int j = 0; j < motusgameframeutil.game.lettresBonPos.length; j++) {
+                if (i == motusgameframeutil.game.lettresBonPos[j]) {
                     this.lineVerification[i] = 2;
                 }
             }
-            for (int k = 0; k < lettresMalPos.length; k++) {
-                if (i == lettresMalPos[k]) {
+            for (int k = 0; k < motusgameframeutil.game.lettresMalPos.length; k++) {
+                if (i == motusgameframeutil.game.lettresMalPos[k]) {
                     this.lineVerification[i] = 1;
                 }
             }

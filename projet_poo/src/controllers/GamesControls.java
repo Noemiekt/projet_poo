@@ -8,7 +8,7 @@ public class GamesControls extends GameControlsBegin {
     public static String motJoueur = graphics.MotusFrame.userInput ;
 	//public static String motJoueur = "";
     public static int[] lettresBonPos;
-    static int[] lettresMalPos;
+    public static int[] lettresMalPos;
 
     public GamesControls() {
         this(new int[longueur], new int[longueur], motJoueur);
