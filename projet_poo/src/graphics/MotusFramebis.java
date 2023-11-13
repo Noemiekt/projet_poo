@@ -10,6 +10,8 @@ public class MotusFramebis {
 	private static int nbLettre;
 	public static JFrame homeFrame;
 	public static JFrame gameFrame;
+	private static String userInput;
+	private static JTextField userInputField;
 	
 	//Home Frame 
 
@@ -130,11 +132,21 @@ public class MotusFramebis {
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         panel.add(createLabel("Ta proposition :"));
-        panel.add(new JTextField(20));
+        userInputField = new JTextField(20);
+        panel.add(userInputField);
+        panel.add(createButton("Validé", e -> validatedButtonClick()));
         panel.add(createButton("Recommencer", e -> restartButtonClicked()));
         panel.add(createButton("Quitter", e -> System.exit(0)));
 
         return panel;
+    }
+    
+    private static void validatedButtonClick() {
+    	userInput = userInputField.getText();
+        
+        // Faire quelque chose avec la saisie, par exemple l'imprimer
+        System.out.println("Saisie de l'utilisateur : " + userInput);
+
     }
 
     private static JLabel createLabel(String text) {
@@ -154,11 +166,10 @@ public class MotusFramebis {
     	gameFrame.setVisible(false);
     	homeFrame = createHomeFrame();
         configureAndShowFrame(homeFrame, 800, 350);
-        
     }
 
 
-    
+  
     private static void configureAndShowFrame(JFrame frame, int width, int height) {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(width, height);
