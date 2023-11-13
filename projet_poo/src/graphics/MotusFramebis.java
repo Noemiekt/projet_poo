@@ -10,7 +10,7 @@ public class MotusFramebis {
 	private static int nbLettre;
 	public static JFrame homeFrame;
 	public static JFrame gameFrame;
-	private static String userInput;
+	public static String userInput;
 	private static JTextField userInputField;
 	
 	//Home Frame 

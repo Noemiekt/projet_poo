@@ -1,21 +1,31 @@
 package controllers;
 
+import graphics .*;
 import java.util.ArrayList;
 
+
 public class GamesControls extends GameControlsBegin {
-    public static String motJoueur = "CACA";
-    static int[] lettresBonPos;
+    public static String motJoueur = graphics.MotusFrame.userInput ;
+	//public static String motJoueur = "";
+    public static int[] lettresBonPos;
     static int[] lettresMalPos;
 
     public GamesControls() {
         this(new int[longueur], new int[longueur], motJoueur);
     }
 
+    public GamesControls(String motJoueur) {
+        this(); // Appel au constructeur par défaut
+        setMotJoueur(motJoueur);
+    }
+    
     public GamesControls(int[] lettresBonPos, int[] lettresMalPos, String motJoueur) {
         setBonPos(lettresBonPos);
         setMalPos(lettresMalPos);
         setMotJoueur(motJoueur);
     }
+    
+    
     
     public String setMotJoueur(String motJoueur) {
         if (motJoueur.length() != longueur) {
