@@ -57,6 +57,7 @@ public class MotusHomeFrame {
 
     private static void handleStartButtonClick() {
         int selectedIndex = letterComboBox.getSelectedIndex();  // Utilisez letterComboBox
+        System.out.println("Saisie de l'utilisateur : " + selectedIndex);
         MotusFrame.nbLettre = selectedIndex;
         MotusFrame.startGame(selectedIndex);
     }

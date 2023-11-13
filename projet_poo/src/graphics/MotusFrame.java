@@ -16,6 +16,7 @@ public class MotusFrame {
     }
 
     public static void startGame(int selectedIndex) {
+    	homeFrame.setVisible(false);
         gameFrame = MotusGameFrame.createGameFrame(selectedIndex);
         MotusFrameUtil.configureAndShowFrame(gameFrame, 800, 350);
 

@@ -42,9 +42,12 @@ public class MotusFrameUtil {
         return cellLabel;
     }
 
-    public static int getSelectedIndex() {
-        // Logique pour récupérer l'index sélectionné dans la liste déroulante
-        return 0;
+    public static JLabel createLabel(String text) {
+        JLabel label = new JLabel(text);
+        label.setForeground(new Color(0, 139, 139));
+        return label;
     }
+    
+    
 }
 
