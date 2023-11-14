@@ -76,7 +76,7 @@ public class Tableau extends Matrice {
 	public void updateTabRightPlaced() {
 	    if (currentAttempt == 0) {
 	        TabRightPlaced[0][0] = 1;
-	        TabRightPlaced[0][positionhasard] = 1;
+	        TabRightPlaced[0][lettre2] = 1;
 	        currentAttempt++;
 	    }
 
