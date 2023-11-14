@@ -13,7 +13,7 @@ public class Matrice extends GamesControls {
 
     public Matrice(int[] tableau) {
         settab(tableau);
-        settab_right_placed(tableau);
+        setLineRightPlaced(tableau);
     }
 
     public int[] settab(int[] lineVerification) {
@@ -34,7 +34,7 @@ public class Matrice extends GamesControls {
     }
     
    
-    public int[] settab_right_placed(int[] lineRightPlaced){
+    public int[] setLineRightPlaced(int[] lineRightPlaced){
     	this.lineRightPlaced = new int[longueur];
     	for (int i = 0; i < longueur; i++) {
             if ((lineVerification[i]==2)) {

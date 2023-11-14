@@ -1,5 +1,6 @@
 package graphics;
 
+import controllers.GameControlsBegin;
 import controllers.Matrice;
 
 public class Tableau extends Matrice {
@@ -11,7 +12,10 @@ public class Tableau extends Matrice {
 	public static int[][] TabRightPlaced;	// Tbleau stockant 0,1
 	public static int currentAttempt = 0;	// La tentative courante 
 	//public static int[] currentLineRightPlaced = mat.lineRightPlaced ;
-	public static String MotDictionnary; 
+	
+	
+
+
 	
 	
 	// INITIALISATION DE LA GRILLE À LA BONNE TAILLE 
@@ -32,15 +36,16 @@ public class Tableau extends Matrice {
 	}
 	
 	// TABINPUT
+	// mot = mot de dictionnaire 
 	public void setTabInput(String motJoueur){
 		if (currentAttempt == 0) {
-			if(MotDictionnary != null && MotDictionnary.length() >= 4) {
-				TabInput[0][0]= lettres[0];
-				int positionAleatoire = (int) (Math.random() * (longueur - 1)) + 1; // Génère une position aléatoire (sauf la première case)
-		        TabInput[0][positionAleatoire] = lettres2; 
+			if(mot != null && mot.length() >= 4) {
+				TabInput[0][lettre1]= premiereLettre; //lettre1 = 0 normalement 
+				// lettre 2 indice aléatoire deuxième lettre 
+		        TabInput[0][lettre2] = lettreAuHasard; 
 		        currentAttempt ++;
 			}
-		} else if (currentAttempt < 7) {
+		} else if (currentAttempt <7) {
 			//Le joueur commence à joue
 			if (motJoueur != null && motJoueur.length() == longueur) {
 				for (int i = 0; i < longueur; i++) {
