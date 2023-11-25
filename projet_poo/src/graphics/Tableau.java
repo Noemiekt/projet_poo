@@ -16,16 +16,16 @@ public class Tableau extends Matrice {
 	
 
 
-	
+	/*
 	
 	// INITIALISATION DE LA GRILLE À LA BONNE TAILLE 
 	public Tableau(int longueur) {
 //		TabInput = new char[7][longueur];
-		TabVerification = new int[7][longueur];
+		TabVerification = new int[7][7];
 		TabRightPlaced = new int[7][longueur];
 		
 		// Initialiser toutes les valeurs à un caractère par défaut, par exemple un espace ' '
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 7; i++) {
             for (int j = 0; j < longueur; j++) {
 //                TabInput[i][j] = '-';
                 TabVerification[i][j] = 0;
@@ -33,7 +33,7 @@ public class Tableau extends Matrice {
             }
         }
         currentAttempt = 0;
-	}
+	}*/
 	
 	// TABINPUT
 	// mot = mot de dictionnaire 
@@ -124,7 +124,7 @@ public class Tableau extends Matrice {
 //    }
 	
 	public void printTabVerification() {
-        for (int i = 0; i < currentAttempt; i++) { 
+        for (int i = 0; i < 7; i++) { 
             for (int j = 0; j < TabVerification[i].length; j++) {
                 System.out.print(TabVerification[i][j] + " ");
             }

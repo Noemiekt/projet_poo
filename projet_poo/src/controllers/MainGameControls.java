@@ -40,6 +40,11 @@ public class MainGameControls{
 		for (int i = 0; i < mat.longueur; i++) {
 			System.out.print(mat.lineVerification[i] + " ");
         }
+		
+		System.out.printf("la ligne est ");
+		for (int i = 0; i < GameControlsBegin.longueur; i++) {
+			System.out.print(Matrice.lineRightPlaced[i] + " ");
+        }
 	}
 	
 	
