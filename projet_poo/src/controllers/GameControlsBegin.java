@@ -17,8 +17,9 @@ public class GameControlsBegin{
 	protected static int lettre2;
 	
 	///// --- Armelouche -----//////
-	protected char lettreAuHasard = mot.charAt(setCoord2(lettre2));
-	public static char premiereLettre = mot.charAt(setCoord1(lettre1));
+//	protected char lettreAuHasard = mot.charAt(setCoord2(lettre2));
+//	
+//	public static char premiereLettre = mot.charAt(setCoord1(lettre1));
 	
 	public GameControlsBegin() {
 		this(lettre1, lettre2);
