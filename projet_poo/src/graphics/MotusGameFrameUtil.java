@@ -5,6 +5,7 @@ public class MotusGameFrameUtil {
     public static void validatedButtonClick() {
      
         MotusFrame.userInput = MotusFrame.userInputField.getText();
+        MotusFrame.userInput = MotusFrame.userInput.toUpperCase();
         
 		  game = new GamesControls(MotusFrame.userInput);
 		  System.out.printf("Le mot est : %s%n", game.motJoueur);

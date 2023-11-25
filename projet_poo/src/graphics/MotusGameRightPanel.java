@@ -10,6 +10,7 @@ public class MotusGameRightPanel {
 
         panel.add(MotusFrameUtil.createLabel("Ta proposition :"));
         MotusFrame.userInputField = new JTextField(20);
+
         panel.add(MotusFrame.userInputField);
         panel.add(MotusFrameUtil.createButton("Validé", e -> MotusGameFrameUtil.validatedButtonClick()));
         panel.add(MotusFrameUtil.createButton("Recommencer", e -> MotusGameFrameUtil.restartButtonClicked()));
