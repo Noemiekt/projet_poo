@@ -9,9 +9,11 @@ public class GamesControls extends GameControlsBegin {
 	//public static String motJoueur = "";
     public static int[] lettresBonPos;
     public static int[] lettresMalPos;
+    public static int erreur_int;
+    public static String erreur_string;
 
     public GamesControls() {
-        this(new int[longueur], new int[longueur], motJoueur);
+        this(new int[longueur], new int[longueur], motJoueur, erreur_int, erreur_string);
     }
 
     public GamesControls(String motJoueur) {
@@ -19,26 +21,73 @@ public class GamesControls extends GameControlsBegin {
         setMotJoueur(motJoueur);
     }
     
-    public GamesControls(int[] lettresBonPos, int[] lettresMalPos, String motJoueur) {
+    public GamesControls(int[] lettresBonPos, int[] lettresMalPos, String motJoueur, int erreur_int2, String erreur_string2) {
         setBonPos(lettresBonPos);
         setMalPos(lettresMalPos);
         setMotJoueur(motJoueur);
+        setErreurInt(erreur_int, motJoueur);
+        setErreurString(erreur_string, motJoueur);
     }
     
     
     
     public String setMotJoueur(String motJoueur) {
-        if (motJoueur.length() != longueur) {
-            throw new IllegalArgumentException("Vous devez avoir un mot de la bonne longueur.");
-        }
-        if (motJoueur.charAt(0) != mot.charAt(0)) {
-            throw new IllegalArgumentException("Vous devez reprendre la première lettre du mot.");
-        }
-        if (!motJoueur.matches("^[a-zA-Z]+$")) {
-            throw new IllegalArgumentException("Vous ne devez utiliser que des lettres.");
-        }
+//        if (motJoueur.length() != longueur) {
+//            throw new IllegalArgumentException("Vous devez avoir un mot de la bonne longueur.");
+//        }
+//        if (motJoueur.charAt(0) != mot.charAt(0)) {
+//            throw new IllegalArgumentException("Vous devez reprendre la première lettre du mot.");
+//        }
+//        if (!motJoueur.matches("^[a-zA-Z]+$")) {
+//            throw new IllegalArgumentException("Vous ne devez utiliser que des lettres.");
+//        }
         this.motJoueur = motJoueur; 
         return motJoueur;
+    }
+    
+    // On verifie les erreurs et on associe un int 	
+    public String setErreurString(String erreur_string, String motJoueur) {
+      this.motJoueur = motJoueur; 
+      
+      if (!motJoueur.matches("^[a-zA-Z]+$")) {
+    	  this.erreur_string = "Vous ne devez utiliser que des lettres.";
+    	  return erreur_string;
+      }
+      if (motJoueur.length() != longueur) {
+    	  this.erreur_string = "Vous devez avoir un mot de la bonne longueur.";
+    	  return erreur_string;
+    	  
+	  }
+	  if (motJoueur.charAt(0) != mot.charAt(0)) {
+		  this.erreur_string = "Vous devez reprendre la première lettre du mot.";
+    	  return erreur_string;
+	  }
+	  else {
+		  this.erreur_string = "";
+    	  return erreur_string;
+	  }
+    }
+    
+    // On verifie les erreurs et on associe un String
+    public int setErreurInt(int erreur_int, String motJoueur) {
+      this.motJoueur = motJoueur; 
+      if (!motJoueur.matches("^[a-zA-Z]+$")) {
+    	  this.erreur_int = 1;
+    	  return erreur_int;
+      }
+      if (motJoueur.length() != longueur) {
+    	  this.erreur_int = 2;
+    	  return erreur_int;
+	  }
+	  if (motJoueur.charAt(0) != mot.charAt(0)) {
+		  this.erreur_int = 3;
+    	  return erreur_int;
+	  }
+	  else {
+		  this.erreur_int = 0;
+    	  return erreur_int;
+	  }
+        
     }
     
     // On cherche les lettres bien positionnées   	

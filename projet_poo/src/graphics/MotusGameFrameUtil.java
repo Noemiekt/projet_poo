@@ -38,14 +38,18 @@ public static Tableau tab;
 	        }
 		  System.out.println("Saisie de l'utilisateur : " + MotusFrame.userInput);
 		  
-		  tab = new Tableau(mat.longueur);
+		  System.out.println("Saisie de l'utilisateur : " + MotusFrame.userInput);
+		  System.out.println("Numero d'erreur : " + game.erreur_int);
+		  System.out.println("Type d'erreur : " + game.erreur_string);
 		  
-		  for (int i = 0; i < tab.TabRightPlaced.length; i++) { 
-	            for (int j = 0; j < tab.TabRightPlaced[i].length; j++) {
-	                System.out.print(tab.TabRightPlaced[i][j] + " ");
-	            }
-	            System.out.println();
-	        }
+//		  tab = new Tableau(mat.longueur);
+//		  
+//		  for (int i = 0; i < tab.TabRightPlaced.length; i++) { 
+//	            for (int j = 0; j < tab.TabRightPlaced[i].length; j++) {
+//	                System.out.print(tab.TabRightPlaced[i][j] + " ");
+//	            }
+//	            System.out.println();
+//	        }
 		 
 		  
     }
