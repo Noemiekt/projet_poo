@@ -12,18 +12,15 @@ public class MotusIntroFrame {
         introFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         introFrame.setLayout(new BorderLayout());
 
-        ImagePanel backgroundPanel = createBackgroundPanel("res/motus.jpeg");
+        ImagePanel backgroundPanel = createBackgroundPanel("res/intro.jpeg");
         introFrame.setContentPane(backgroundPanel);
-
-        JLabel clickLabel = createClickLabel("Click to start the game");
-        introFrame.add(clickLabel, BorderLayout.NORTH);
 
         addClickAction(introFrame);
 
         return introFrame;
     }
 
-    private static ImagePanel createBackgroundPanel(String imagePath) {
+    public static ImagePanel createBackgroundPanel(String imagePath) {
         ImagePanel backgroundPanel = new ImagePanel(imagePath);
         backgroundPanel.setLayout(new BorderLayout());
         return backgroundPanel;
@@ -47,7 +44,7 @@ public class MotusIntroFrame {
     }
 
 
-    private static class ImagePanel extends JPanel {
+    public static class ImagePanel extends JPanel {
         private Image backgroundImage;
 
         public ImagePanel(String imagePath) {
