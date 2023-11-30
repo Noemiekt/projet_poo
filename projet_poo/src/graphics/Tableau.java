@@ -16,7 +16,7 @@ public class Tableau extends Matrice {
 	
 
 
-	/*
+	
 	
 	// INITIALISATION DE LA GRILLE À LA BONNE TAILLE 
 	public Tableau(int longueur) {
@@ -33,7 +33,7 @@ public class Tableau extends Matrice {
             }
         }
         currentAttempt = 0;
-	}*/
+	}
 	
 	// TABINPUT
 	// mot = mot de dictionnaire 
