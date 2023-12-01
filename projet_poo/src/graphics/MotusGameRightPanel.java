@@ -27,7 +27,7 @@ public class MotusGameRightPanel {
         panel.add(MotusFrame.userInputField, gbc);
 
         gbc.gridy++;
-        JButton buttonValider = MotusFrameUtil.createButton("Validé", e -> MotusGameFrameUtil.validatedButtonClick());
+        JButton buttonValider = MotusFrameUtil.createButton("Valider", e -> MotusGameFrameUtil.validatedButtonClick());
         panel.add(buttonValider, gbc);
 
         gbc.gridy++;

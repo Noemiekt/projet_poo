@@ -2,12 +2,7 @@ package graphics;
 
 import javax.swing.*;
 
-import controllers.GameControlsBegin;
-import controllers.GamesControls;
 
-import controllers.*;
-
-import java.awt.*;
 
 public class MotusFrame {
 	public static int nbLettre;

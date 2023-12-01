@@ -1,9 +1,14 @@
 package graphics;
+import javax.swing.JFrame;
+
 import controllers.*;
+import graphics.MotusIntroFrame.ImagePanel;
 public class MotusGameFrameUtil {
  //private static final Object[] TabRightPlaced = null;
 public static GamesControls game;
 public static Tableau tab;
+public static JFrame errorFrame;
+
     public static void validatedButtonClick() {
      
         MotusFrame.userInput = MotusFrame.userInputField.getText();
@@ -11,6 +16,32 @@ public static Tableau tab;
         
         
 		  game = new GamesControls(MotusFrame.userInput);
+		  
+
+		  String err_string =game.erreur_string;
+		  
+		  if (game.erreur_int==1) {
+			  errorFrame = MotusFrameUtil.createErrorFrame();
+		      ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/nonvalidelettre.jpeg");
+		      errorFrame.setContentPane(backgroundPanel);
+		      MotusFrameUtil.configureAndShowMessage(errorFrame, 600, 300);
+		  }
+		  
+		  if (game.erreur_int==2) {
+			  errorFrame = MotusFrameUtil.createErrorFrame();
+			  ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/nonvalidelong.jpeg");
+		      errorFrame.setContentPane(backgroundPanel);
+		      MotusFrameUtil.configureAndShowMessage(errorFrame, 600, 300);
+		  }
+		  
+		  if (game.erreur_int==3) {
+			  errorFrame = MotusFrameUtil.createErrorFrame();
+			  ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/nonvalideprems.jpeg");
+		      errorFrame.setContentPane(backgroundPanel);
+		      MotusFrameUtil.configureAndShowMessage(errorFrame, 600, 300);
+		  }
+		  
+		  
 		  System.out.printf("Le mot est : %s%n", game.motJoueur);
 		  System.out.print("les indices de lettres bien positionnées sont : ");
 		  for (int i = 0; i < game.lettresBonPos.length; i++) {
@@ -59,6 +90,6 @@ public static Tableau tab;
     public static void restartButtonClicked() {
         MotusFrame.gameFrame.setVisible(false);
         MotusFrame.homeFrame = MotusHomeFrame.createHomeFrame();
-        MotusFrameUtil.configureAndShowFrame(MotusFrame.homeFrame, 800, 350);
+        MotusFrameUtil.configureAndShowFrame(MotusFrame.homeFrame, 960, 540);
     }
 }

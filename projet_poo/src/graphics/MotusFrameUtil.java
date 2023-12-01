@@ -1,6 +1,9 @@
 package graphics;
 
 import javax.swing.*;
+
+import graphics.MotusIntroFrame.ImagePanel;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -9,6 +12,12 @@ public class MotusFrameUtil {
 	
     public static void configureAndShowFrame(JFrame frame, int width, int height) {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(width, height);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+    
+    public static void configureAndShowMessage(JFrame frame, int width, int height) {
         frame.setSize(width, height);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
@@ -60,6 +69,14 @@ public class MotusFrameUtil {
     	label.setFont(font);
         label.setForeground(roseColor);
         return label;
+    }
+    
+    public static JFrame createErrorFrame() {
+        JFrame errorFrame = new JFrame("Error");
+        
+        errorFrame.setLayout(new BorderLayout());
+        
+        return errorFrame;
     }
     
     
