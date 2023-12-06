@@ -70,45 +70,27 @@ public class GamesControls extends GameControlsBegin {
                 position[i] = 2;
             }
         }
+        
+        for (int i = 0; i < MotusVariable.nbLettre; i++) {
+            char lettre1 = MotusVariable.motAtrouver.charAt(i);
+            char lettre2 = MotusVariable.userInput.charAt(i);
 
-        // Marquer les lettres mal placées (position i : 1)
-        for (int i = 0; i < MotusVariable.motAtrouver.length(); i++) {
-            if (position[i] == 2) {
-                continue; // Si la lettre est déjà bien placée, passer à la suivante
-            }
-            
-            int occ = compterOccurencesLettre(MotusVariable.motAtrouver, MotusVariable.userInput.charAt(i));
-            System.out.print("occ " + occ + MotusVariable.userInput.charAt(i));
-            
-            
-            for (int j = 0; j < MotusVariable.motAtrouver.length(); j++) {
-            	if (occ ==0) {
-            		break;
-            	}
-            	System.out.print("occ " + occ + MotusVariable.userInput.charAt(i));
-            	System.out.println();
-            	System.out.print("char à rechercher " + MotusVariable.motAtrouver.charAt(j));
-            	System.out.println();
-            	System.out.print("position " + position[j]);
-            	System.out.println();
+            if (lettre1 != lettre2) {
+                int occurrences = compterOccurencesLettre(MotusVariable.motAtrouver,lettre1);
 
-            	if (MotusVariable.motAtrouver.charAt(j)==MotusVariable.userInput.charAt(i) && (position[j] == 1 || position[j] == 2 )&& occ>0) {
-            		occ --;
-            		System.out.println("zizi");
-            	}
-            	
+                for (int j = 0; j < MotusVariable.nbLettre; j++) {
+                    if (j != i && MotusVariable.userInput.charAt(j) == lettre1 && occurrences > 0) {
+                        if (lettre1 != MotusVariable.motAtrouver.charAt(j)) {
+                            position[j]=1;
+                            occurrences--;
+                        }
+                    }
+                }
             }
-            System.out.print("occ avant if " + occ + MotusVariable.userInput.charAt(i));
-            
-            if (occ >0) {
-            	position[i] = 1;
-            	
-            }
-            
-            
-
         }
 
+        
+            
         // Les lettres non marquées sont mal placées (position i : 0)
         for (int i = 0; i < MotusVariable.motAtrouver.length(); i++) {
             if (position[i] != 0 && position[i] != 1) {
