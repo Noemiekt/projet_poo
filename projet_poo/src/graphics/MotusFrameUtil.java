@@ -2,13 +2,12 @@ package graphics;
 
 import javax.swing.*;
 
-import graphics.MotusIntroFrame.ImagePanel;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class MotusFrameUtil {
-	public static Color roseColor = Color.decode("#ff32af");
+
 	
     public static void configureAndShowFrame(JFrame frame, int width, int height) {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,7 +27,7 @@ public class MotusFrameUtil {
     public static JLabel createTitleLabel(String text) {
         JLabel titleLabel = new JLabel(text);
         titleLabel.setFont(new Font("Impact", Font.BOLD, 50));
-        titleLabel.setForeground(roseColor);
+        titleLabel.setForeground(MotusVariable.rose);
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         return titleLabel;
     }
@@ -45,7 +44,7 @@ public class MotusFrameUtil {
     	JButton button = new JButton(text);
     	Font font = new Font("Impact", Font.BOLD, 14);
     	button.setFont(font);
-    	button.setBackground(roseColor);
+    	button.setBackground(MotusVariable.rose);
         button.setOpaque(true);
         button.setForeground(Color.WHITE);
         button.setBorderPainted(false);
@@ -57,9 +56,8 @@ public class MotusFrameUtil {
 
     public static JLabel createEmptyCellLabel() {
         JLabel cellLabel = new JLabel("");
-        cellLabel.setBorder(BorderFactory.createLineBorder(roseColor,2));
+        cellLabel.setBorder(BorderFactory.createLineBorder(MotusVariable.rose,2));
         cellLabel.setOpaque(true);
-        cellLabel.setBackground(Color.WHITE);
         return cellLabel;
     }
 
@@ -67,7 +65,7 @@ public class MotusFrameUtil {
         JLabel label = new JLabel(text);
         Font font = new Font("Impact", Font.BOLD, 30);
     	label.setFont(font);
-        label.setForeground(roseColor);
+        label.setForeground(MotusVariable.rose);
         return label;
     }
     
@@ -77,6 +75,43 @@ public class MotusFrameUtil {
         errorFrame.setLayout(new BorderLayout());
         
         return errorFrame;
+    }
+    
+    public static JFrame createEndFrame() {
+        JFrame endFrame = new JFrame("End");
+        
+        endFrame.setLayout(new BorderLayout());
+        
+        return endFrame;
+    }
+    
+    public static JFrame createNextFrame() {
+        JFrame nextFrame = new JFrame("End");
+        nextFrame.setLayout(new BorderLayout());
+        
+        JPanel panel = new JPanel(new GridBagLayout());
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0, 0, 10, 0);
+        
+        gbc.gridy++;
+        JButton buttonRecommencer = MotusFrameUtil.createButton("Recommencer", e -> MotusGameFrameUtil.restartButtonClicked());
+        panel.add(buttonRecommencer, gbc);
+
+        gbc.gridy++;
+        JButton buttonQuitter = MotusFrameUtil.createButton("Quitter", e -> System.exit(0));
+        panel.add(buttonQuitter, gbc);
+        
+        panel.setOpaque(false);
+        panel.setPreferredSize(new Dimension(460, 520));
+        
+        nextFrame.add(panel, BorderLayout.CENTER);
+        
+        return nextFrame;
     }
     
     

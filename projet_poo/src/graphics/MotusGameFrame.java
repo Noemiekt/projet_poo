@@ -4,26 +4,39 @@ import javax.swing.*;
 
 import graphics.MotusIntroFrame.ImagePanel;
 
+import controllers.GameControlsBegin;
+
 import java.awt.*;
 
 public class MotusGameFrame {
-    public static JFrame createGameFrame(int selectedIndex) {
+	
+	
+	public static JPanel gameLeftPanel;
+	public static JPanel gameRightPanel;
+	
+    public static JFrame createGameFrame() {
         JFrame gameFrame = new JFrame("Jeu Motus");
         
+        
+        GameControlsBegin.initmotdebase();
+        System.out.print("le mot à trouver :" + MotusVariable.motAtrouver );
+        System.out.println();
+        
+        Tab.initTabInput();
+        Tab.initTabVerification();
      
 
         ImagePanel backgroundPanel = new ImagePanel("res/game.jpeg");
         gameFrame.setContentPane(backgroundPanel);
         
-     // Utiliser BorderLayout pour que les panneaux s'étendent
-        gameFrame.setLayout(new BorderLayout());
-
-        JPanel gameLeftPanel = MotusGameLeftPanel.createGameLeftPanel(selectedIndex);
-        JPanel gameRightPanel = MotusGameRightPanel.createGameRightPanel(gameFrame);
-
         
+        gameFrame.setLayout(new BorderLayout());
+       
 
-        // Ajouter les panneaux avec des contraintes pour qu'ils s'étendent
+        gameLeftPanel = MotusGameLeftPanel.UpdateLeftPanel();
+        gameRightPanel = MotusGameRightPanel.createGameRightPanel(gameFrame);
+
+            
         gameFrame.add(gameLeftPanel, BorderLayout.WEST);
         gameFrame.add(gameRightPanel, BorderLayout.EAST);
 

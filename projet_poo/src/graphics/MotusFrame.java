@@ -5,12 +5,9 @@ import javax.swing.*;
 
 
 public class MotusFrame {
-	public static int nbLettre;
 	public static JFrame introFrame;
     public static JFrame homeFrame;
     public static JFrame gameFrame;
-    public static String userInput;
-    public static JTextField userInputField;
     
     public static void main(String[] args) {
         introFrame = MotusIntroFrame.createIntroFrame();
@@ -24,15 +21,10 @@ public class MotusFrame {
 
     }
 
-    public static void startGame(int selectedIndex) {
+    public static void startGame() {
     	homeFrame.setVisible(false);
-        gameFrame = MotusGameFrame.createGameFrame(selectedIndex);
+        gameFrame = MotusGameFrame.createGameFrame();
         MotusFrameUtil.configureAndShowFrame(gameFrame, 960, 540);
 
-    }
- 
-
-    
-    
-    
+    } 
 }

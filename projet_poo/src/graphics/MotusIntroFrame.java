@@ -26,13 +26,6 @@ public class MotusIntroFrame {
         return backgroundPanel;
     }
 
-    private static JLabel createClickLabel(String text) {
-        JLabel clickLabel = new JLabel(text);
-        clickLabel.setFont(new Font("Arial", Font.PLAIN, 18));
-        clickLabel.setForeground(Color.BLACK);
-        clickLabel.setHorizontalAlignment(JLabel.CENTER);
-        return clickLabel;
-    }
 
     private static void addClickAction(JFrame frame) {
         frame.addMouseListener(new MouseAdapter() {
@@ -58,7 +51,5 @@ public class MotusIntroFrame {
         }
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(MotusIntroFrame::createIntroFrame);
-    }
+    
 }

@@ -1,47 +1,141 @@
 package graphics;
+import java.awt.BorderLayout;
+import java.awt.Font;
+
+import javax.swing.*;
+
+
+
 import javax.swing.JFrame;
 
 import controllers.*;
 import graphics.MotusIntroFrame.ImagePanel;
+
 public class MotusGameFrameUtil {
- //private static final Object[] TabRightPlaced = null;
-public static GamesControls game;
-public static Tableau tab;
+
+
 public static JFrame errorFrame;
+public static JFrame endFrame;
+public static JFrame nextFrame;
+
 
     public static void validatedButtonClick() {
      
-        MotusFrame.userInput = MotusFrame.userInputField.getText();
-        MotusFrame.userInput = MotusFrame.userInput.toUpperCase();
+        MotusVariable.userInput = MotusVariable.userInputField.getText();
+        MotusVariable.userInput = MotusVariable.userInput.toUpperCase();
+        System.out.print("le mot est : " + MotusVariable.userInput );
+        System.out.println();
         
         
-		  game = new GamesControls(MotusFrame.userInput);
+        
+		  int err = GamesControls.setErreurInt();
 		  
-
-		  String err_string =game.erreur_string;
-		  
-		  if (game.erreur_int==1) {
+		  if (err==1) {
 			  errorFrame = MotusFrameUtil.createErrorFrame();
 		      ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/nonvalidelettre.jpeg");
 		      errorFrame.setContentPane(backgroundPanel);
 		      MotusFrameUtil.configureAndShowMessage(errorFrame, 600, 300);
 		  }
 		  
-		  if (game.erreur_int==2) {
+		  else if (err==2) {
 			  errorFrame = MotusFrameUtil.createErrorFrame();
 			  ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/nonvalidelong.jpeg");
 		      errorFrame.setContentPane(backgroundPanel);
 		      MotusFrameUtil.configureAndShowMessage(errorFrame, 600, 300);
 		  }
 		  
-		  if (game.erreur_int==3) {
+		  else if (err==3) {
 			  errorFrame = MotusFrameUtil.createErrorFrame();
 			  ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/nonvalideprems.jpeg");
 		      errorFrame.setContentPane(backgroundPanel);
 		      MotusFrameUtil.configureAndShowMessage(errorFrame, 600, 300);
 		  }
 		  
+		  else {
+			  MotusVariable.nbEssai=MotusVariable.nbEssai+1;
+			  Tab.modifTabVerification();
+			  Tab.modifTabInput();
+			  MotusGameLeftPanel.afficherTableau(MotusVariable.TabVerification);
+			  MotusGameLeftPanel.afficherTableau2D(MotusVariable.TabInput);
+			  
+			  //Recharger le tableau
+			  MotusFrame.gameFrame.remove(MotusGameFrame.gameLeftPanel);
+			  MotusGameFrame.gameLeftPanel = MotusGameLeftPanel.UpdateLeftPanel();
+
+			  MotusFrame.gameFrame.add(MotusGameFrame.gameLeftPanel, BorderLayout.WEST);
+
+			  MotusFrame.gameFrame.revalidate();
+			  MotusFrame.gameFrame.repaint();
+			  
+			  if (motbon()==0) {
+				  winGame();
+			  }
+			  if (MotusVariable.nbEssai==7) {
+				  looseGame();
+				  nextGame();
+				  
+			  }
+			  
+			  
+
+			  
+		  }
+    }
+    
+    public static int motbon() {
+    	for (int valeur : MotusVariable.TabVerification[MotusVariable.nbEssai-1]) {
+            if (valeur != 2) {
+            	return 1;
+            }
+        }
+    	return 0;
+    }
+    
+    public static void looseGame() {
+    	endFrame = MotusFrameUtil.createEndFrame();
+		ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/perdu.jpeg");
+		endFrame.setContentPane(backgroundPanel);
+		MotusFrameUtil.configureAndShowMessage(endFrame, 600, 300);
+    }
+    
+    public static void nextGame() {
+    	nextFrame = MotusFrameUtil.createNextFrame();
+		ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/choix.jpeg");
+		nextFrame.setContentPane(backgroundPanel);
+		MotusFrameUtil.configureAndShowMessage(nextFrame, 600, 300);
+    }
+    	
+    
+    public static void winGame() {
+    	endFrame = MotusFrameUtil.createEndFrame();
+		ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/bravo.jpeg");
+		endFrame.setContentPane(backgroundPanel);
+		
+		JLabel label = new JLabel("Le bon mot était : " + MotusVariable.motAtrouver);
+		label.setFont(new Font("Impact", Font.BOLD, 50));
+        label.setForeground(MotusVariable.rose);
+	    label.setHorizontalAlignment(JLabel.CENTER); // Centre le texte horizontalement
+	    label.setVerticalAlignment(JLabel.BOTTOM); // Aligne le texte en bas
+	    endFrame.add(label);
+		MotusFrameUtil.configureAndShowMessage(endFrame, 600, 300);
+    }
+
+       
 		  
+	   	  
+    public static void restartButtonClicked() {
+    	MotusFrame.gameFrame.setVisible(false);
+		MotusFrame.homeFrame = MotusHomeFrame.createHomeFrame();
+		MotusFrameUtil.configureAndShowFrame(MotusFrame.homeFrame, 960, 540);
+    }
+}
+		  
+		  
+		  
+		  
+		  
+		  
+		  /*
 		  System.out.printf("Le mot est : %s%n", game.motJoueur);
 		  System.out.print("les indices de lettres bien positionnées sont : ");
 		  for (int i = 0; i < game.lettresBonPos.length; i++) {
@@ -81,15 +175,14 @@ public static JFrame errorFrame;
 //	            }
 //	            System.out.println();
 //	        }
+ * 
+ */
 		 
 		  
-    }
+    
+    
+
     
    
-   	  
-    public static void restartButtonClicked() {
-        MotusFrame.gameFrame.setVisible(false);
-        MotusFrame.homeFrame = MotusHomeFrame.createHomeFrame();
-        MotusFrameUtil.configureAndShowFrame(MotusFrame.homeFrame, 960, 540);
-    }
-}
+
+

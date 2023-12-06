@@ -1,43 +1,67 @@
 package graphics;
 
 import controllers.GameControlsBegin;
+import controllers.GamesControls;
 import controllers.Matrice;
 
 public class Tab extends Matrice {
 	
-	static Matrice mat = new Matrice();
 	
-	public static char[][] TabInput; //Tableau stockant les mot saisi
-	public static int[][] TabVerification; 	//Tableau stockant 0,1,2
-	public static int[][] TabRightPlaced;
-	public static int currentAttempt = 0;	// La tentative courante 
+
+	public static void initTabVerification() {
+		
+		MotusVariable.TabVerification=new int[7][MotusVariable.nbLettre];
+
+		
+		for (int i = 0; i < 7; i++) {
+	        for (int j = 0; j < MotusVariable.nbLettre; j++) {
+	        	MotusVariable.TabVerification[i][j] = -1;
+	        }
+	    }
+		
+		GameControlsBegin.initmotdebase();
+				
+		MotusVariable.TabVerification[0][GameControlsBegin.setCoord1()]=2;
+		MotusVariable.TabVerification[0][GameControlsBegin.setCoord2()]=2;
+		
+		MotusGameLeftPanel.afficherTableau(MotusVariable.TabVerification);
+		
+	}
 	
 	
+	public static void initTabInput() {
+		MotusVariable.TabInput=new char[7][MotusVariable.nbLettre];
+		
+		MotusVariable.TabInput[0]=(MotusVariable.motAtrouver).toCharArray();
+		
+
+	}
 	
-	// initialiser les tableaux 
-	public void initTab() {
-		GameControlsBegin gameControls = new GameControlsBegin();
-		for(int i=0; i<7; i++) {
-			for(int j=0; j<longueur; j++) {
-				if(i==0 && j== GameControlsBegin.lettre1) {
-					TabInput[i][j] = gameControls.getLetterAtL1();
-					TabVerification[i][j] = 2;
-				}
-				else if(i==0 && j==GameControlsBegin.lettre2) {
-					TabInput[i][j] = gameControls.getLetterAtL2();
-					TabVerification[i][j] = 2;
-				}
-				else {
-					TabInput[i][j] = '_'; // Cacher les lettres
-			        TabVerification[i][j] = -1; // Marquer comme non affiché
-				}
-			}
+	public static void modifTabVerification() {
+		int[] position =GamesControls.setPositionInt();
+
+		
+        if (MotusVariable.nbEssai<7) {
+        	for (int i = 0; i < MotusVariable.nbLettre; i++) {
+    			if ((MotusVariable.TabVerification[MotusVariable.nbEssai-1][i]==2)||(position[i]==2)) {
+    				MotusVariable.TabVerification[MotusVariable.nbEssai][i]=2;
+    			}
+    		}   	
+        }
+		MotusVariable.TabVerification[MotusVariable.nbEssai-1]=position;
+		
+	}
+	
+	public static void modifTabInput() {	
+		MotusVariable.TabInput[MotusVariable.nbEssai-1]=(MotusVariable.userInput).toCharArray();
+		if (MotusVariable.nbEssai<7) {
+			MotusVariable.TabInput[MotusVariable.nbEssai]=(MotusVariable.motAtrouver).toCharArray();
 		}
 	}
 	
-	public void newAttempt() {
-		
-	}
+	
+	
+	
 	
 	
 	
@@ -84,7 +108,7 @@ public class Tab extends Matrice {
 //	    return false;
 //	}
 	
-	
+	/*
 	// TABLERIGHTPLACED
 	public void updateTabRightPlaced() {
 	    if (currentAttempt == 0) {
@@ -160,5 +184,5 @@ public class Tab extends Matrice {
         }
     }
 	
-	
+	*/
 }

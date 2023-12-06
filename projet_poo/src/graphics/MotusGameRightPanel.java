@@ -20,11 +20,11 @@ public class MotusGameRightPanel {
         panel.add(label, gbc);
 
         gbc.gridy++;
-        MotusFrame.userInputField = new JTextField();
-        MotusFrame.userInputField.setHorizontalAlignment(JTextField.CENTER);
-        MotusFrame.userInputField.setColumns(20); // Ajustez le nombre de colonnes selon vos besoins
-        MotusFrame.userInputField.setMaximumSize(new Dimension(300, MotusFrameUtil.createButton("Validé", e -> {}).getPreferredSize().height));
-        panel.add(MotusFrame.userInputField, gbc);
+        MotusVariable.userInputField = new JTextField();
+        MotusVariable.userInputField.setHorizontalAlignment(JTextField.CENTER);
+        MotusVariable.userInputField.setColumns(20); // Ajustez le nombre de colonnes selon vos besoins
+        MotusVariable.userInputField.setMaximumSize(new Dimension(300, MotusFrameUtil.createButton("Validé", e -> {}).getPreferredSize().height));
+        panel.add(MotusVariable.userInputField, gbc);
 
         gbc.gridy++;
         JButton buttonValider = MotusFrameUtil.createButton("Valider", e -> MotusGameFrameUtil.validatedButtonClick());
@@ -40,6 +40,8 @@ public class MotusGameRightPanel {
 
         panel.setOpaque(false);
         panel.setPreferredSize(new Dimension(460, 520));
+        
+
 
         return panel;
     }
