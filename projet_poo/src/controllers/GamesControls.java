@@ -78,22 +78,31 @@ public class GamesControls extends GameControlsBegin {
             }
             
             int occ = compterOccurencesLettre(MotusVariable.motAtrouver, MotusVariable.userInput.charAt(i));
-            System.out.println(occ);
+            System.out.print("occ " + occ + MotusVariable.userInput.charAt(i));
             
             
             for (int j = 0; j < MotusVariable.motAtrouver.length(); j++) {
             	if (occ ==0) {
             		break;
             	}
-            	if (MotusVariable.motAtrouver.charAt(j)==MotusVariable.userInput.charAt(i) && position[j] == 2 && position[j] == 1) {
+            	System.out.print("occ " + occ + MotusVariable.userInput.charAt(i));
+            	System.out.println();
+            	System.out.print("char à rechercher " + MotusVariable.motAtrouver.charAt(j));
+            	System.out.println();
+            	System.out.print("position " + position[j]);
+            	System.out.println();
+
+            	if (MotusVariable.motAtrouver.charAt(j)==MotusVariable.userInput.charAt(i) && (position[j] == 1 || position[j] == 2 )&& occ>0) {
             		occ --;
             		System.out.println("zizi");
             	}
-            	if (occ >0) {
-                	position[i] = 1;
-                	break;
-                	
-                }
+            	
+            }
+            System.out.print("occ avant if " + occ + MotusVariable.userInput.charAt(i));
+            
+            if (occ >0) {
+            	position[i] = 1;
+            	
             }
             
             
