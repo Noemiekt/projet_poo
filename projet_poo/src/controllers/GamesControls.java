@@ -76,13 +76,28 @@ public class GamesControls extends GameControlsBegin {
             if (position[i] == 2) {
                 continue; // Si la lettre est déjà bien placée, passer à la suivante
             }
-
+            
+            int occ = compterOccurencesLettre(MotusVariable.motAtrouver, MotusVariable.userInput.charAt(i));
+            System.out.println(occ);
+            
+            
             for (int j = 0; j < MotusVariable.motAtrouver.length(); j++) {
-                if (i != j && MotusVariable.userInput.charAt(i) == MotusVariable.motAtrouver.charAt(j) && position[j] != 2 && position[j] != 1) {
-                    position[i] = 1;
-                    break;
+            	if (occ ==0) {
+            		break;
+            	}
+            	if (MotusVariable.motAtrouver.charAt(j)==MotusVariable.userInput.charAt(i) && position[j] == 2 && position[j] == 1) {
+            		occ --;
+            		System.out.println("zizi");
+            	}
+            	if (occ >0) {
+                	position[i] = 1;
+                	break;
+                	
                 }
             }
+            
+            
+
         }
 
         // Les lettres non marquées sont mal placées (position i : 0)
