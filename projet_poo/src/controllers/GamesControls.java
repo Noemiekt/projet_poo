@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 public class GamesControls extends GameControlsBegin {
-    public static String motJoueur = graphics.MotusFrame.userInput ;
+    /*public static String motJoueur = graphics.MotusFrame.userInput ;
 	//public static String motJoueur = "";
     public static int[] lettresBonPos;
     public static int[] lettresMalPos;
@@ -28,7 +28,72 @@ public class GamesControls extends GameControlsBegin {
         setErreurInt(erreur_int, motJoueur);
         setErreurString(erreur_string, motJoueur);
     }
+    */
     
+    public static int setErreurInt() {
+        if (!MotusVariable.userInput.matches("^[a-zA-Z]+$")) {
+      	  return 1;
+        }
+        if (MotusVariable.userInput.length() != MotusVariable.nbLettre) {
+      	  return 2;
+	  	  }
+	  	  if (MotusVariable.userInput.charAt(0) != MotusVariable.motAtrouver.charAt(0)) {
+	      	  return 3;
+	  	  }
+	  	  else {
+	      	  return 0;
+	  	  }   
+    }
+    
+
+    public static int compterOccurencesLettre(String mot, char lettre) {
+        int compteur = 0;
+
+        for (int i = 0; i < mot.length(); i++) {
+            if (mot.charAt(i) == lettre) {
+                compteur++;
+            }
+        }
+        return compteur;
+    }
+    
+    
+    public static int[] setPositionInt() {
+
+        int[] position = new int[MotusVariable.nbLettre];
+
+        // Marquer les lettres bien placées (position i : 2)
+        for (int i = 0; i < MotusVariable.motAtrouver.length(); i++) {
+            if (MotusVariable.userInput.charAt(i) == MotusVariable.motAtrouver.charAt(i)) {
+                position[i] = 2;
+            }
+        }
+
+        // Marquer les lettres mal placées (position i : 1)
+        for (int i = 0; i < MotusVariable.motAtrouver.length(); i++) {
+            if (position[i] == 2) {
+                continue; // Si la lettre est déjà bien placée, passer à la suivante
+            }
+
+            for (int j = 0; j < MotusVariable.motAtrouver.length(); j++) {
+                if (i != j && MotusVariable.userInput.charAt(i) == MotusVariable.motAtrouver.charAt(j) && position[j] != 2 && position[j] != 1) {
+                    position[i] = 1;
+                    break;
+                }
+            }
+        }
+
+        // Les lettres non marquées sont mal placées (position i : 0)
+        for (int i = 0; i < MotusVariable.motAtrouver.length(); i++) {
+            if (position[i] != 0 && position[i] != 1) {
+                position[i] = 2;
+            }
+        }
+
+        return position;
+    }
+    
+    /*
     
     
     public String setMotJoueur(String motJoueur) {
@@ -68,6 +133,7 @@ public class GamesControls extends GameControlsBegin {
 	  }
     }
     
+    /*
     // On verifie les erreurs et on associe un String
     public int setErreurInt(int erreur_int, String motJoueur) {
       this.motJoueur = motJoueur; 
@@ -86,9 +152,9 @@ public class GamesControls extends GameControlsBegin {
 	  else {
 		  this.erreur_int = 0;
     	  return erreur_int;
-	  }
-        
+	  }   
     }
+    
     
     // On cherche les lettres bien positionnées   	
     public int[] setBonneLettres(int[] lettresBonPos) {
@@ -153,4 +219,5 @@ public class GamesControls extends GameControlsBegin {
     public void setMalPos(int[] lettresMalPos) {
         this.lettresMalPos = setMauvaiseEndroitLettre(lettresMalPos);
     }
+    */
 }
