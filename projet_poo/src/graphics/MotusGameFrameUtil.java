@@ -26,7 +26,7 @@ public static JFrame nextFrame;
         System.out.print("le mot est : " + MotusVariable.userInput );
         System.out.println();
         
-        
+        MotusVariable.userInputField.setText("");
         
 		  int err = GamesControls.setErreurInt();
 		  
