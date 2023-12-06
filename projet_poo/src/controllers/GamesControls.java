@@ -38,6 +38,8 @@ public class GamesControls extends GameControlsBegin {
       	  return 2;
 	  	  }
 	  	  if (MotusVariable.userInput.charAt(0) != MotusVariable.motAtrouver.charAt(0)) {
+	  		  System.out.println(MotusVariable.userInput.charAt(0));
+	  		  System.out.println(MotusVariable.motAtrouver.charAt(0));
 	      	  return 3;
 	  	  }
 	  	  else {

@@ -20,11 +20,13 @@ public class MotusGameFrame {
         
         GameControlsBegin.initmotdebase();
         System.out.print("le mot à trouver :" + MotusVariable.motAtrouver );
+       
         System.out.println();
         
         Tab.initTabInput();
         Tab.initTabVerification();
-     
+        
+        
 
         ImagePanel backgroundPanel = new ImagePanel("res/game.jpeg");
         gameFrame.setContentPane(backgroundPanel);

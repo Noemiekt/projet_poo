@@ -19,7 +19,7 @@ public class Tab extends Matrice {
 	        }
 	    }
 		
-		GameControlsBegin.initmotdebase();
+//		GameControlsBegin.initmotdebase();
 				
 		MotusVariable.TabVerification[0][GameControlsBegin.setCoord1()]=2;
 		MotusVariable.TabVerification[0][GameControlsBegin.setCoord2()]=2;

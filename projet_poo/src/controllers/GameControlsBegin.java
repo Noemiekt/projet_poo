@@ -20,30 +20,34 @@ public class GameControlsBegin{
 	
 	
 	public static void initmotdebase() {
-		if (MotusVariable.nbLettre==4) {
-			MotusVariable.motAtrouver="papa";
-			MotusVariable.motAtrouver=MotusVariable.motAtrouver.toUpperCase();
-	    }
-		if (MotusVariable.nbLettre==5) {
-			MotusVariable.motAtrouver="hello";
-			MotusVariable.motAtrouver=MotusVariable.motAtrouver.toUpperCase();
-	    }
-		if (MotusVariable.nbLettre==6) {
-			MotusVariable.motAtrouver="coucou";
-			MotusVariable.motAtrouver=MotusVariable.motAtrouver.toUpperCase();
-	    }
-		if (MotusVariable.nbLettre==7) {
-			MotusVariable.motAtrouver="partage";
-			MotusVariable.motAtrouver=MotusVariable.motAtrouver.toUpperCase();
-	    }
-		if (MotusVariable.nbLettre==8) {
-			MotusVariable.motAtrouver="alexandr";
-			MotusVariable.motAtrouver=MotusVariable.motAtrouver.toUpperCase();
-	    }
-		if (MotusVariable.nbLettre==9) {
-			MotusVariable.motAtrouver="alexandra";
-			MotusVariable.motAtrouver=MotusVariable.motAtrouver.toUpperCase();
-	    }
+		MotusVariable.motAtrouver=dictionary.selectRandomWord(MotusVariable.nbLettre);
+		MotusVariable.motAtrouver=MotusVariable.motAtrouver.toUpperCase();
+		System.out.println("je suis dans game control");
+		System.out.println(MotusVariable.motAtrouver);
+//		if (MotusVariable.nbLettre==4) {
+//			MotusVariable.motAtrouver="papa";
+//			MotusVariable.motAtrouver=MotusVariable.motAtrouver.toUpperCase();
+//	    }
+//		if (MotusVariable.nbLettre==5) {
+//			MotusVariable.motAtrouver="hello";
+//			MotusVariable.motAtrouver=MotusVariable.motAtrouver.toUpperCase();
+//	    }
+//		if (MotusVariable.nbLettre==6) {
+//			MotusVariable.motAtrouver="coucou";
+//			MotusVariable.motAtrouver=MotusVariable.motAtrouver.toUpperCase();
+//	    }
+//		if (MotusVariable.nbLettre==7) {
+//			MotusVariable.motAtrouver="partage";
+//			MotusVariable.motAtrouver=MotusVariable.motAtrouver.toUpperCase();
+//	    }
+//		if (MotusVariable.nbLettre==8) {
+//			MotusVariable.motAtrouver="alexandr";
+//			MotusVariable.motAtrouver=MotusVariable.motAtrouver.toUpperCase();
+//	    }
+//		if (MotusVariable.nbLettre==9) {
+//			MotusVariable.motAtrouver="alexandra";
+//			MotusVariable.motAtrouver=MotusVariable.motAtrouver.toUpperCase();
+//	    }
 		
 	}
 	
