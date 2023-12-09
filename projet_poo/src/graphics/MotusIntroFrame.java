@@ -31,6 +31,7 @@ public class MotusIntroFrame {
         frame.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+            	MotusFrame.introFrame.setVisible(false);
                 MotusFrame.home();
             }
         });

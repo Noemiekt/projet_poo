@@ -14,4 +14,8 @@ public class MotusVariable {
     public static Color gold = Color.decode("#ffd700");
     public static char[][] TabInput=new char[7][MotusVariable.nbLettre]; //Tableau stockant les mot saisi
 	public static int[][] TabVerification=new int[7][MotusVariable.nbLettre];
+	public static String[][] TabScore=new String[1][2];
+	public static int indLangue;
+	public static int oneVone;
+	
 }

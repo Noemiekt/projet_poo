@@ -17,6 +17,8 @@ public class MotusGameFrame {
     public static JFrame createGameFrame() {
         JFrame gameFrame = new JFrame("Jeu Motus");
         
+        MotusVariable.nbEssai=0;
+        
         
         GameControlsBegin.initmotdebase();
         System.out.print("le mot à trouver :" + MotusVariable.motAtrouver );

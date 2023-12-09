@@ -39,10 +39,26 @@ public class MotusFrameUtil {
         startButton.addActionListener(listener);
         return startButton;
     }
+    
+    
 
     public static JButton createButton(String text, ActionListener listener) {
     	JButton button = new JButton(text);
     	Font font = new Font("Impact", Font.BOLD, 14);
+    	button.setFont(font);
+    	button.setBackground(MotusVariable.rose);
+        button.setOpaque(true);
+        button.setForeground(Color.WHITE);
+        button.setBorderPainted(false);
+        button.setFocusPainted(false);
+        button.addActionListener(listener);
+        
+        return button;
+    }
+    
+    public static JButton createButton2(String text, ActionListener listener) {
+    	JButton button = new JButton(text);
+    	Font font = new Font("Impact", Font.BOLD, 30);
     	button.setFont(font);
     	button.setBackground(MotusVariable.rose);
         button.setOpaque(true);
