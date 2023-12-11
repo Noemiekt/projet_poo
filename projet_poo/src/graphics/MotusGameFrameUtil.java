@@ -33,6 +33,7 @@ public static JFrame nextFrame;
 		  int err = GamesControls.setErreurInt();
 		  
 		  if (err==1) {
+			  Music.playMusic("./err.wav");
 			  errorFrame = MotusFrameUtil.createErrorFrame();
 		      ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/nonvalidelettre.jpeg");
 		      errorFrame.setContentPane(backgroundPanel);
@@ -40,6 +41,7 @@ public static JFrame nextFrame;
 		  }
 		  
 		  else if (err==2) {
+			  Music.playMusic("./err.wav");
 			  errorFrame = MotusFrameUtil.createErrorFrame();
 			  ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/nonvalidelong.jpeg");
 		      errorFrame.setContentPane(backgroundPanel);
@@ -47,6 +49,7 @@ public static JFrame nextFrame;
 		  }
 		  
 		  else if (err==3) {
+			  Music.playMusic("./err.wav");
 			  errorFrame = MotusFrameUtil.createErrorFrame();
 			  ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/nonvalideprems.jpeg");
 		      errorFrame.setContentPane(backgroundPanel);
@@ -72,10 +75,12 @@ public static JFrame nextFrame;
 			  MotusFrame.gameFrame.repaint();
 			  
 			  if (motbon()==0) {
+				  Music.playMusic("./yeah.wav");
 				  winGame();
 				  
 			  }
 			  if (MotusVariable.nbEssai==7) {
+				  Music.playMusic("./nul.wav");
 				  looseGame();		  
 			  }
 			  
@@ -250,6 +255,9 @@ public static JFrame nextFrame;
 		  
 	   	  
     public static void restartButtonClicked() {
+    	Music.stopMusic("./justken.wav");
+    	Music.stopMusic("./song.wav");
+    	Music.playMusic("./home.wav");
     	MotusFrame.gameFrame.setVisible(false);
     	GameTimer.cancelTimer();
     	GameTimer.purgeTimer();

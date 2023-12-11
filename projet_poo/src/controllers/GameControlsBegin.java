@@ -2,6 +2,7 @@ package controllers;
 
 
 import java.util.Random;
+import java.text.Normalizer;
 import graphics.MotusVariable;
 
 public class GameControlsBegin{
@@ -21,6 +22,9 @@ public class GameControlsBegin{
 	
 	public static void initmotdebase() {
 		MotusVariable.motAtrouver=dictionary.selectRandomWord(MotusVariable.nbLettre);
+		MotusVariable.motAtrouver = Normalizer.normalize(MotusVariable.motAtrouver, Normalizer.Form.NFD);
+		MotusVariable.motAtrouver = MotusVariable.motAtrouver.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+
 		MotusVariable.motAtrouver=MotusVariable.motAtrouver.toUpperCase();
 		System.out.println("je suis dans game control");
 		System.out.println(MotusVariable.motAtrouver);

@@ -51,6 +51,8 @@ public class GameTimer {
     }
     
     public static void endTime() {
+    	Music.stopMusic("./song.wav");
+    	Music.playMusic("./justken.wav");
     	MotusGameFrameUtil.messFrame = MotusFrameUtil.createEndFrame();
 		ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/temps.jpeg");
 		MotusGameFrameUtil.messFrame.setContentPane(backgroundPanel);
