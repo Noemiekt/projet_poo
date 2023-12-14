@@ -19,28 +19,20 @@ public class MotusGameFrame {
         
         MotusVariable.nbEssai=0;
         
-        
         GameControlsBegin.initmotdebase();
         System.out.print("le mot à trouver :" + MotusVariable.motAtrouver );
-       
         System.out.println();
         
         Tab.initTabInput();
         Tab.initTabVerification();
         
-        
-
         ImagePanel backgroundPanel = new ImagePanel("res/game.jpeg");
-        gameFrame.setContentPane(backgroundPanel);
-        
-        
+        gameFrame.setContentPane(backgroundPanel);      
         gameFrame.setLayout(new BorderLayout());
        
-
         gameLeftPanel = MotusGameLeftPanel.UpdateLeftPanel();
         gameRightPanel = MotusGameRightPanel.createGameRightPanel(gameFrame);
 
-            
         gameFrame.add(gameLeftPanel, BorderLayout.WEST);
         gameFrame.add(gameRightPanel, BorderLayout.EAST);
 

@@ -23,8 +23,6 @@ public class Music {
                 Clip clip = AudioSystem.getClip();
                 clip.open(audioInput);
                 clip.start();
-
-                // Stocker la référence du clip
                 musicClips.put(filePath, clip);
             } else {
                 System.out.println("Can't find file");
@@ -41,8 +39,6 @@ public class Music {
                 clip.stop();
             }
             clip.close();
-
-            // Enlever le clip de la map
             musicClips.remove(filePath);
         }
     }

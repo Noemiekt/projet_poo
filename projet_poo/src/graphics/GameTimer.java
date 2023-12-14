@@ -37,29 +37,40 @@ public class GameTimer {
     }
     
     public static void cancelTimer() {
-        // Arrêter le Timer
         if (timer != null) {
             timer.cancel();
         }
     }
     
     public static void purgeTimer() {
-        // Arrêter le Timer
         if (timer != null) {
             timer.purge();
         }
     }
     
     public static void endTime() {
-    	Music.stopMusic("./song.wav");
-    	Music.playMusic("./justken.wav");
-    	MotusGameFrameUtil.messFrame = MotusFrameUtil.createEndFrame();
-		ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/temps.jpeg");
-		MotusGameFrameUtil.messFrame.setContentPane(backgroundPanel);
-		
-		JPanel panel = new JPanel(new GridBagLayout());
-		
-		GridBagConstraints gbc = new GridBagConstraints();
+        stopAndPlayMusic();
+        setupEndFrame();
+        addComponentsToEndFrame();
+        configureAndShowEndFrame();
+        addWindowListenerToEndFrame();
+    }
+
+    private static void stopAndPlayMusic() {
+        Music.stopMusic("./song.wav");
+        Music.playMusic("./justken.wav");
+    }
+
+    private static void setupEndFrame() {
+        MotusGameFrameUtil.messFrame = MotusFrameUtil.createEndFrame();
+        ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/temps.jpeg");
+        MotusGameFrameUtil.messFrame.setContentPane(backgroundPanel);
+    }
+
+    private static void addComponentsToEndFrame() {
+        JPanel panel = new JPanel(new GridBagLayout());
+        
+        GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.CENTER;
@@ -70,20 +81,22 @@ public class GameTimer {
         panel.add(buttonValider, gbc);
         
         MotusGameFrameUtil.messFrame.add(panel, BorderLayout.SOUTH);
-		
-		
-		MotusFrameUtil.configureAndShowMessage(MotusGameFrameUtil.messFrame, 600, 300);
-		
-		MotusGameFrameUtil.messFrame.addWindowListener(new WindowAdapter() {
-	        @Override
-	         public void windowClosing(WindowEvent e) {
-	              // Appel de la fonction home() lorsque l'utilisateur ferme la fenêtre
-	        	MotusGameFrameUtil.messFrame.setVisible(false);
-	            MotusFrame.home();
-	          }
-		  });
     }
-    
+
+    private static void configureAndShowEndFrame() {
+        MotusFrameUtil.configureAndShowMessage(MotusGameFrameUtil.messFrame, 600, 300);
+    }
+
+    private static void addWindowListenerToEndFrame() {
+        MotusGameFrameUtil.messFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                MotusGameFrameUtil.messFrame.setVisible(false);
+                MotusFrame.home();
+            }
+        });
+    }
+
     
     private void updateLabel() {
         int minutes = secondsRemaining / 60;

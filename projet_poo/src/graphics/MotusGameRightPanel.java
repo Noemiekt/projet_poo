@@ -2,20 +2,9 @@ package graphics;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.awt.Color;
-
-
-import graphics.GameTimer;
-
-
 
 public class MotusGameRightPanel {
     public static JPanel createGameRightPanel(JFrame frame) {
-    	
-		
-        
 		JPanel panel = new JPanel(new GridBagLayout());
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
@@ -58,14 +47,11 @@ public class MotusGameRightPanel {
         JButton buttonQuitter = MotusFrameUtil.createButton("Quitter", e -> System.exit(0));
         panel.add(buttonQuitter, gbc);
         
-        // Démarrer le minuteur après avoir déclaré timerLabel
-        GameTimer gameTimer = new GameTimer(60, timerLabel); // 300 secondes = 5 minutes
+        GameTimer gameTimer = new GameTimer(60, timerLabel); 
 
         panel.setOpaque(false);
         panel.setPreferredSize(new Dimension(460, 520));
         
-
-
         return panel;
     }
 }

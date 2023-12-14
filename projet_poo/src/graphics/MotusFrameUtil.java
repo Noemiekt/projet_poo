@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class MotusFrameUtil {
-
 	
     public static void configureAndShowFrame(JFrame frame, int width, int height) {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -22,8 +21,6 @@ public class MotusFrameUtil {
         frame.setVisible(true);
     }
     
-    
-
     public static JLabel createTitleLabel(String text) {
         JLabel titleLabel = new JLabel(text);
         titleLabel.setFont(new Font("Impact", Font.BOLD, 50));
@@ -39,7 +36,6 @@ public class MotusFrameUtil {
         startButton.addActionListener(listener);
         return startButton;
     }
-    
     
 
     public static JButton createButton(String text, ActionListener listener) {
@@ -86,18 +82,14 @@ public class MotusFrameUtil {
     }
     
     public static JFrame createErrorFrame() {
-        JFrame errorFrame = new JFrame("Error");
-        
+        JFrame errorFrame = new JFrame("Error");       
         errorFrame.setLayout(new BorderLayout());
-        
         return errorFrame;
     }
     
     public static JFrame createEndFrame() {
-        JFrame endFrame = new JFrame("End");
-        
-        endFrame.setLayout(new BorderLayout());
-        
+        JFrame endFrame = new JFrame("End");    
+        endFrame.setLayout(new BorderLayout());    
         return endFrame;
     }
     

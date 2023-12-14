@@ -14,82 +14,94 @@ import controllers.*;
 import graphics.MotusIntroFrame.ImagePanel;
 
 public class MotusGameFrameUtil {
+	public static JFrame errorFrame;
+	public static JFrame messFrame;
+	public static JFrame nextFrame;
+	
+	// New user input
+	public static void validatedButtonClick() {
+	    processUserInput();
+	}
+	
+	// Input processing
+	private static void processUserInput() {
+		// Input recovery
+	    MotusVariable.userInput = MotusVariable.userInputField.getText();
+	    MotusVariable.userInput = MotusVariable.userInput.toUpperCase();
+	    MotusVariable.userInputField.setText("");
+	
+	    //Input check
+	    int err = GamesControls.setErreurInt();
+	    handleErrorCode(err);
+	}
+	
+	
+	private static void handleErrorCode(int err) {
+	    if (err >= 1 && err <= 3) {
+	        handleInvalidInputError(err);
+	    } else {
+	        handleValidInput();
+	    }
+	}
+	
+	
+	// Input error :
+	private static void handleInvalidInputError(int err) {
+		// Error message display
+	    Music.playMusic("./err.wav");
+	    errorFrame = MotusFrameUtil.createErrorFrame();
+	    String imagePath = getImagePathBasedOnErrorCode(err);
+	    ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel(imagePath);
+	    errorFrame.setContentPane(backgroundPanel);
+	    MotusFrameUtil.configureAndShowMessage(errorFrame, 600, 300);
+	}
+	
+	// Find the type of error
+	private static String getImagePathBasedOnErrorCode(int err) {
+	    switch (err) {
+	        case 1:
+	            return "res/nonvalidelettre.jpeg";
+	        case 2:
+	            return "res/nonvalidelong.jpeg";
+	        case 3:
+	            return "res/nonvalideprems.jpeg";
+	        default:
+	            return "";
+	    }
+	}
+	
+	// Valid Input
+	private static void handleValidInput() {
+	    MotusVariable.nbEssai = MotusVariable.nbEssai + 1;
+	
+	    // Update table
+	    Tab.modifTabInput();
+	    Tab.modifTabVerification();
+	
+	    updateGameFrame();
+	}
+	
+	private static void updateGameFrame() {
+	    MotusFrame.gameFrame.remove(MotusGameFrame.gameLeftPanel);
+	    MotusGameFrame.gameLeftPanel = MotusGameLeftPanel.UpdateLeftPanel();
+	
+	    MotusFrame.gameFrame.add(MotusGameFrame.gameLeftPanel, BorderLayout.WEST);
+	
+	    MotusFrame.gameFrame.revalidate();
+	    MotusFrame.gameFrame.repaint();
+	
+	    if (motbon() == 0) {
+	        Music.playMusic("./yeah.wav");
+	        winGame();
+	    }
+	
+	    if (MotusVariable.nbEssai == 7) {
+	        Music.playMusic("./nul.wav");
+	        looseGame();
+	    }
+	}
 
-
-public static JFrame errorFrame;
-public static JFrame messFrame;
-public static JFrame nextFrame;
-
-
-    public static void validatedButtonClick() {
-     
-        MotusVariable.userInput = MotusVariable.userInputField.getText();
-        MotusVariable.userInput = MotusVariable.userInput.toUpperCase();
-        System.out.print("le mot est : " + MotusVariable.userInput );
-        System.out.println();
-        
-        MotusVariable.userInputField.setText("");
-        
-		  int err = GamesControls.setErreurInt();
-		  
-		  if (err==1) {
-			  Music.playMusic("./err.wav");
-			  errorFrame = MotusFrameUtil.createErrorFrame();
-		      ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/nonvalidelettre.jpeg");
-		      errorFrame.setContentPane(backgroundPanel);
-		      MotusFrameUtil.configureAndShowMessage(errorFrame, 600, 300);
-		  }
-		  
-		  else if (err==2) {
-			  Music.playMusic("./err.wav");
-			  errorFrame = MotusFrameUtil.createErrorFrame();
-			  ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/nonvalidelong.jpeg");
-		      errorFrame.setContentPane(backgroundPanel);
-		      MotusFrameUtil.configureAndShowMessage(errorFrame, 600, 300);
-		  }
-		  
-		  else if (err==3) {
-			  Music.playMusic("./err.wav");
-			  errorFrame = MotusFrameUtil.createErrorFrame();
-			  ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/nonvalideprems.jpeg");
-		      errorFrame.setContentPane(backgroundPanel);
-		      MotusFrameUtil.configureAndShowMessage(errorFrame, 600, 300);
-		  }
-		  
-		  else {
-			  MotusVariable.nbEssai=MotusVariable.nbEssai+1;
-			  
-			  Tab.modifTabInput();
-			  Tab.modifTabVerification();
-			  
-			  MotusGameLeftPanel.afficherTableau(MotusVariable.TabVerification);
-			  MotusGameLeftPanel.afficherTableau2D(MotusVariable.TabInput);
-			  
-			  //Recharger le tableau
-			  MotusFrame.gameFrame.remove(MotusGameFrame.gameLeftPanel);
-			  MotusGameFrame.gameLeftPanel = MotusGameLeftPanel.UpdateLeftPanel();
-
-			  MotusFrame.gameFrame.add(MotusGameFrame.gameLeftPanel, BorderLayout.WEST);
-
-			  MotusFrame.gameFrame.revalidate();
-			  MotusFrame.gameFrame.repaint();
-			  
-			  if (motbon()==0) {
-				  Music.playMusic("./yeah.wav");
-				  winGame();
-				  
-			  }
-			  if (MotusVariable.nbEssai==7) {
-				  Music.playMusic("./nul.wav");
-				  looseGame();		  
-			  }
-			  
-			  
-
-			  
-		  }
-    }
-    
+    // Check that user input is the correct word
     public static int motbon() {
     	for (int valeur : MotusVariable.TabVerification[MotusVariable.nbEssai-1]) {
             if (valeur != 2) {
@@ -100,21 +112,37 @@ public static JFrame nextFrame;
     }
     
    
-    
     public static void nextButtonClick() {
-    	messFrame.setVisible(false);
-    	nextFrame = MotusFrameUtil.createNextFrame();
-		ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/choix.jpeg");
-		nextFrame.setContentPane(backgroundPanel);
-		
-		JPanel panel = new JPanel(new GridBagLayout());
-		
-		GridBagConstraints gbc = new GridBagConstraints();
+        hideCurrentFrame();
+        createAndConfigureNextFrame();
+        addButtonsAndPanelToNextFrame();
+        configureAndShowNextFrame();
+        addWindowListenerToNextFrame();
+    }
+
+    private static void hideCurrentFrame() {
+        messFrame.setVisible(false);
+    }
+
+    private static void createAndConfigureNextFrame() {
+        nextFrame = MotusFrameUtil.createNextFrame();
+        ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/choix.jpeg");
+        nextFrame.setContentPane(backgroundPanel);
+    }
+
+    private static void addButtonsAndPanelToNextFrame() {
+        JPanel panel = createButtonPanel();
+        nextFrame.add(panel, BorderLayout.SOUTH);
+    }
+
+    private static JPanel createButtonPanel() {
+        JPanel panel = new JPanel(new GridBagLayout());
+        
+        GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(0, 0, 10, 0);
-        
         
         JButton buttonRecommencer = MotusFrameUtil.createButton("Recommencer", e -> closeAndRestart());
         panel.add(buttonRecommencer, gbc);
@@ -124,24 +152,24 @@ public static JFrame nextFrame;
         panel.add(buttonQuitter, gbc);
         
         panel.setOpaque(false);
-        
-        
-        nextFrame.add(panel, BorderLayout.SOUTH);
-		
-		
-		MotusFrameUtil.configureAndShowMessage(nextFrame, 600, 300);
-		
-		nextFrame.addWindowListener(new WindowAdapter() {
-	        @Override
-	         public void windowClosing(WindowEvent e) {
-	              // Appel de la fonction home() lorsque l'utilisateur ferme la fenêtre
-	        	nextFrame.setVisible(false);
-	            MotusFrame.home();
-	          }
-		  });
-    
+        return panel;
     }
-    	
+
+    private static void configureAndShowNextFrame() {
+        MotusFrameUtil.configureAndShowMessage(nextFrame, 600, 300);
+    }
+
+    private static void addWindowListenerToNextFrame() {
+        nextFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                nextFrame.setVisible(false);
+                MotusFrame.home();
+            }
+        });
+    }
+
+    // Update the Score
     public static void addScore() {
     	if (MotusVariable.TabScore[0][1]==null) {
     		int score=(7-MotusVariable.nbEssai)*MotusVariable.nbLettre*GameTimer.secondsRemaining;
@@ -154,99 +182,78 @@ public static JFrame nextFrame;
     		}
     	}
     }
-    
+    public static void endGame(String imagePath) {
+        stopGameTimer();
+        
+        messFrame = MotusFrameUtil.createEndFrame();
+        setupEndFrame(imagePath);
+        addComponentsToPanel();
+        configureAndShowEndFrame();
+    }
+
+    private static void stopGameTimer() {
+        GameTimer.cancelTimer();
+        GameTimer.purgeTimer();
+    }
+
+    private static void setupEndFrame(String imagePath) {
+        ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel(imagePath);
+        messFrame.setContentPane(backgroundPanel);
+    }
+
+    private static void addComponentsToPanel() {
+        JPanel panel = new JPanel(new GridBagLayout());
+        
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0, 0, 10, 0);
+        
+        JLabel label = MotusFrameUtil.createLabel("Le bon mot :");
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.add(label, gbc);
+        
+        gbc.gridy++;
+        JLabel label2 = MotusFrameUtil.createLabel(MotusVariable.motAtrouver);
+        label2.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.add(label2, gbc);
+        gbc.gridy++;
+        JButton button = MotusFrameUtil.createButton("Next", e -> nextButtonClick());
+        panel.add(button, gbc);
+ 
+        
+        panel.setOpaque(false);
+        messFrame.add(panel, BorderLayout.SOUTH);
+    }
+
+  
+
+    private static void configureAndShowEndFrame() {
+        MotusFrameUtil.configureAndShowMessage(messFrame, 600, 300);
+        
+        messFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                messFrame.setVisible(false);
+                MotusFrame.home();
+            }
+        });
+    }
+
     public static void winGame() {
     	GameTimer.cancelTimer();	
     	addScore();
     	GameTimer.purgeTimer();
-    	
-    	messFrame = MotusFrameUtil.createEndFrame();
-		ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/bravo.jpeg");
-		messFrame.setContentPane(backgroundPanel);
-		
-		JPanel panel = new JPanel(new GridBagLayout());
-		
-		GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0, 0, 10, 0);
-        
-        
-        JLabel label = MotusFrameUtil.createLabel("Le bon mot :");
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-        panel.add(label, gbc);
-        
-        gbc.gridy++;
-        JLabel label2 = MotusFrameUtil.createLabel(MotusVariable.motAtrouver);
-        label2.setHorizontalAlignment(SwingConstants.CENTER);
-        panel.add(label2, gbc);
-        
-        gbc.gridy++;
-        JButton buttonValider = MotusFrameUtil.createButton("Next", e -> nextButtonClick());
-        panel.setOpaque(false);
-        panel.add(buttonValider, gbc);
-        
-        messFrame.add(panel, BorderLayout.SOUTH);
-		
-		
-		MotusFrameUtil.configureAndShowMessage(messFrame, 600, 300);
-		
-		messFrame.addWindowListener(new WindowAdapter() {
-	        @Override
-	         public void windowClosing(WindowEvent e) {
-	              // Appel de la fonction home() lorsque l'utilisateur ferme la fenêtre
-	        	messFrame.setVisible(false);
-	            MotusFrame.home();
-	          }
-		  });
+        endGame("res/bravo.jpeg");
     }
-    
+
     public static void looseGame() {
     	GameTimer.cancelTimer();
     	GameTimer.purgeTimer();
-    	messFrame = MotusFrameUtil.createEndFrame();
-		ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/perdu.jpeg");
-		messFrame.setContentPane(backgroundPanel);
-		
-		JPanel panel = new JPanel(new GridBagLayout());
-		
-		GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0, 0, 10, 0);
-        
-        
-        JLabel label = MotusFrameUtil.createLabel("Le bon mot :");
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-        panel.add(label, gbc);
-        
-        gbc.gridy++;
-        JLabel label2 = MotusFrameUtil.createLabel(MotusVariable.motAtrouver);
-        label2.setHorizontalAlignment(SwingConstants.CENTER);
-        panel.add(label2, gbc);
-        
-        gbc.gridy++;
-        JButton buttonValider = MotusFrameUtil.createButton("Next", e ->nextButtonClick());
-        panel.setOpaque(false);
-        panel.add(buttonValider, gbc);
-        
-        messFrame.add(panel, BorderLayout.SOUTH);
-		
-		
-		MotusFrameUtil.configureAndShowMessage(messFrame, 600, 300);
-		
-		messFrame.addWindowListener(new WindowAdapter() {
-	        @Override
-	         public void windowClosing(WindowEvent e) {
-	              // Appel de la fonction home() lorsque l'utilisateur ferme la fenêtre
-	        	messFrame.setVisible(false);
-	            MotusFrame.home();
-	          }
-		  });
+        endGame("res/perdu.jpeg");
     }
-    
+
     
     public static void closeAndRestart() {
     	nextFrame.setVisible(false);

@@ -39,6 +39,8 @@ public class MotusIntroFrame {
 
 
     public static class ImagePanel extends JPanel {
+    	private static final long serialVersionUID = 1L;
+    	
         private Image backgroundImage;
 
         public ImagePanel(String imagePath) {

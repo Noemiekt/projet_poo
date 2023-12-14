@@ -9,23 +9,19 @@ import java.util.Random;
 
 public class Dictionnary {
 	
-	
-    static public List<String> dictionary =new ArrayList<>(); // Liste stockant les mots du dictionnaire 
-    public static Random random = new Random();; // génerateur de nombres aléatoire 
+    static public List<String> dictionary =new ArrayList<>(); 
+    public static Random random = new Random();; 
 
-    // Constructeur de la classe Dictionary : le param : chemin vers le fichier dictionnaire  
     public Dictionnary(String fileName) {
     	loadWordsFromFile(fileName);
     }
     
-    // Lire les mots à parti du fichier dictonnaire.txt
+  
     public void loadWordsFromFile(String fileName) {
     	try {
-    		// Créer un BufferedReader pour lire les mots à partir du fichier
     		BufferedReader reader = new BufferedReader(new FileReader(fileName));
     		String line;
     		
-    		// Lit chaque ligne du fichier et ajoute le mot au dictionnaire 
     	    while ((line = reader.readLine()) != null) {
     	        dictionary.add(line);
     	    }
@@ -36,11 +32,8 @@ public class Dictionnary {
     	}	
     }
     
-
-    // Méthode sélectionnant aléatoirement un mot à partir du dictionnaire
     static public String selectRandomWord(int wordLength) {
     	List<String> matchingWords = new ArrayList<>();
-    	// on parcourt chaque mot de dictionnary 
         for (String word : dictionary) {
             if (word.length() == wordLength) {
                 matchingWords.add(word);
@@ -48,9 +41,8 @@ public class Dictionnary {
         }
 
         if (matchingWords.isEmpty()) {
-            return null; // No word of the specified length found in the dictionary.
+            return null; 
         }
-        // Chosir un mot au hasard 
         int randomIndex = random.nextInt(matchingWords.size());
         return matchingWords.get(randomIndex);
     		

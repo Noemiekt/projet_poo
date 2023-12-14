@@ -17,12 +17,10 @@ public class MotusHomeFrame {
         frame.setContentPane(backgroundPanel);
 
         JPanel mainPanel = MotusHomeFrameUtil.createMainPanel();
-        
-        frame.setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        frame.add(mainPanel, gbc);
+
+        frame.setLayout(new BorderLayout());
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
+        frame.add(mainPanel, BorderLayout.SOUTH);
 
         return frame;
     }
