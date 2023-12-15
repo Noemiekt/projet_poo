@@ -2,6 +2,7 @@ package graphics;
 
 import javax.swing.*;
 
+import controllers.MotusVariable;
 import graphics.MotusIntroFrame.ImagePanel;
 
 import java.awt.*;
@@ -12,7 +13,6 @@ import java.awt.event.WindowEvent;
 public class GameTimer {
 	
     public static void endTime() {
-    	MotusGameLeftPanel.erraseLeftPanel();
     	Motus1V1Util.addScore1V1(0);
         stopAndPlayMusic();
         setupEndFrame();
@@ -41,6 +41,16 @@ public class GameTimer {
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(0, 0, 10, 0);
         
+        JLabel label = MotusFrameUtil.createLabel("Le bon mot :");
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.add(label, gbc);
+        
+        gbc.gridy++;
+        JLabel label2 = MotusFrameUtil.createLabel(MotusVariable.motAtrouver);
+        label2.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.add(label2, gbc);
+        
+        gbc.gridy++;
         JButton buttonValider = MotusFrameUtil.createButton("Next", e -> MotusGameFrameUtil.nextButtonClick());
         panel.setOpaque(false);
         panel.add(buttonValider, gbc);

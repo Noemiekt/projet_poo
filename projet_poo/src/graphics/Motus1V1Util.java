@@ -26,12 +26,14 @@ public class Motus1V1Util {
 	public static JFrame score1V1Frame;
 	
 	public static void createAndConfigureAnnouncePlayerFrame() {
+		
 		playerPresentFrame = MotusFrameUtil.createAnnouncePlayerFrame();
 		ImagePanel backgroundPanel;
 		if (MotusVariable.who1V1player==1) {
 			backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/images/joueur1.jpeg");
 		}
 		else {
+			MotusGameFrameUtil.erraseTab();
 			backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/images/joueur2.jpeg");
 		}
         

@@ -91,14 +91,12 @@ public class MotusGameFrameUtil {
 	    MotusFrame.gameFrame.repaint();
 	
 	    if (motbon() == 0) {
-	    	erraseTab();
 	        Music.playMusic("res/musiques/yeah.wav");
 	        winGame();
 	    }
 	
 	    if (MotusVariable.nbEssai == 7) {
 	        Music.playMusic("res/musiques/nul.wav");
-	        erraseTab();
 	        looseGame();
 	    }
 	}
