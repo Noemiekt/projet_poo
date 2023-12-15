@@ -10,7 +10,11 @@ import java.util.Random;
 public class Dictionnary {
 	
     static public List<String> dictionary =new ArrayList<>(); 
-    public static Random random = new Random();; 
+    public static Random random = new Random();
+    public static Dictionnary frenchdictionary = new Dictionnary("res/dictionary/french.txt");
+    public static Dictionnary englishdictionary = new Dictionnary("res/dictionary/eng.txt");
+    public static Dictionnary spanishdictionary = new Dictionnary("res/dictionary/esp.txt");
+    
 
     public Dictionnary(String fileName) {
     	loadWordsFromFile(fileName);
@@ -34,6 +38,7 @@ public class Dictionnary {
     
     public String selectRandomWord(int wordLength) {
     	List<String> matchingWords = new ArrayList<>();
+    	
         for (String word : dictionary) {
             if (word.length() == wordLength) {
                 matchingWords.add(word);

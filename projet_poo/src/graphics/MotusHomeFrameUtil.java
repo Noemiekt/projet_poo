@@ -1,6 +1,7 @@
 package graphics;
 
 import java.awt.FlowLayout;
+
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -18,7 +19,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import controllers.GameControlsBegin;
 import graphics.MotusIntroFrame.ImagePanel;
+
 
 public class MotusHomeFrameUtil {
 	private static JComboBox<String> letterComboBoxLet;
@@ -170,7 +173,11 @@ public class MotusHomeFrameUtil {
         int selectedIndex = letterComboBoxLet.getSelectedIndex();
         MotusVariable.nbLettre = selectedIndex+4;
         MotusVariable.indLangue=letterComboBoxLang.getSelectedIndex();
+        
+        GameControlsBegin.initmotdebase();
         MotusFrame.startGame();
     }
+    
+    
 
 }
