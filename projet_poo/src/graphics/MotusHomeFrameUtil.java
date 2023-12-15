@@ -19,7 +19,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import controllers.GameControlsBegin;
 import graphics.MotusIntroFrame.ImagePanel;
 
 
@@ -164,8 +163,18 @@ public class MotusHomeFrameUtil {
     
 
     private static void handle1V1ButtonClick() {
-    	MotusVariable.oneVone=1;
-    	handleStartButtonClick();
+    	MotusVariable.is1V1=1;
+    	MotusVariable.who1V1player=1;
+    	
+    	int selectedIndex = letterComboBoxLet.getSelectedIndex();
+        MotusVariable.nbLettre = selectedIndex+4;
+        MotusVariable.indLangue=letterComboBoxLang.getSelectedIndex();
+        
+    	
+    	Motus1V1Util.createAndConfigureAnnouncePlayerFrame();
+    	Motus1V1Util.addButtonsAndPanelToPlayerFrame();
+    	Motus1V1Util.configureAndShowPlayerPresentFrame();
+    	Motus1V1Util.addWindowListenerToPlayerPresentFrame();
     	
     }
 
@@ -174,7 +183,6 @@ public class MotusHomeFrameUtil {
         MotusVariable.nbLettre = selectedIndex+4;
         MotusVariable.indLangue=letterComboBoxLang.getSelectedIndex();
         
-        GameControlsBegin.initmotdebase();
         MotusFrame.startGame();
     }
     

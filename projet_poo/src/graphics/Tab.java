@@ -7,15 +7,33 @@ import controllers.GamesControls;
 public class Tab  {
 
 	public static void initTabVerification() {
+		
 		MotusVariable.TabVerification=new int[7][MotusVariable.nbLettre];
+		MotusVariable.TabVerificationInit=new int[7][MotusVariable.nbLettre];
 		for (int i = 0; i < 7; i++) {
 	        for (int j = 0; j < MotusVariable.nbLettre; j++) {
 	        	MotusVariable.TabVerification[i][j] = -1;
+	        	MotusVariable.TabVerificationInit[i][j] = -1;
 	        }
 	    }			
-		MotusVariable.TabVerification[0][GameControlsBegin.setCoord1()]=2;
-		MotusVariable.TabVerification[0][GameControlsBegin.setCoord2()]=2;
+		int coord1=GameControlsBegin.setCoord1();
+		int coord2=GameControlsBegin.setCoord2();
+			
+		MotusVariable.TabVerification[0][coord1]=2;
+		MotusVariable.TabVerification[0][coord2]=2;
+		MotusVariable.TabVerificationInit[0][coord1]=2;
+		MotusVariable.TabVerificationInit[0][coord2]=2;
 
+	}
+	public static void initTabVerification2ndplayer() {
+		
+		MotusVariable.TabVerification=new int[7][MotusVariable.nbLettre];
+
+		for (int i = 0; i < 7; i++) {
+	        for (int j = 0; j < MotusVariable.nbLettre; j++) {
+	        	MotusVariable.TabVerification[i][j] = MotusVariable.TabVerificationInit[i][j];
+	        }
+	    }			
 	}
 	
 	

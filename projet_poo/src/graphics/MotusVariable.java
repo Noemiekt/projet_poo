@@ -12,9 +12,12 @@ public class MotusVariable {
     public static String motAtrouver;
     public static Color rose = Color.decode("#ff32af");
     public static Color gold = Color.decode("#ffd700");
-    public static char[][] TabInput=new char[7][MotusVariable.nbLettre]; //Tableau stockant les mot saisi
+    public static char[][] TabInput=new char[7][MotusVariable.nbLettre]; 
 	public static int[][] TabVerification=new int[7][MotusVariable.nbLettre];
+	public static int[][] TabVerificationInit=new int[7][MotusVariable.nbLettre];
 	public static String[][] TabScore=new String[1][2];
+	public static String[][] Tab1V1=new String[1][4];
 	public static int indLangue;
-	public static int oneVone;		
+	public static int is1V1=0;	
+	public static int who1V1player=1;
 }

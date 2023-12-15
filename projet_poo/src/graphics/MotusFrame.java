@@ -10,6 +10,8 @@ public class MotusFrame {
     
     public static void main(String[] args) {
     	MotusVariable.TabScore[0][0]="Meilleur Score";
+    	MotusVariable.Tab1V1[0][0]="Joueur 1";
+    	MotusVariable.Tab1V1[0][2]="Joueur 2";
         introFrame = MotusIntroFrame.createIntroFrame();
         MotusFrameUtil.configureAndShowFrame(introFrame, 960, 540);
     }

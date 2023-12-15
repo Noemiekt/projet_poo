@@ -114,11 +114,27 @@ public class MotusGameFrameUtil {
    
     public static void nextButtonClick() {
         hideCurrentFrame();
-        createAndConfigureNextFrame();
-        addButtonsAndPanelToNextFrame();
-        configureAndShowNextFrame();
-        addWindowListenerToNextFrame();
+        if ((MotusVariable.is1V1==1)&&(MotusVariable.who1V1player==1)) {
+        	MotusVariable.who1V1player=2;
+        	Motus1V1Util.createAndConfigureAnnouncePlayerFrame();
+        	Motus1V1Util.addButtonsAndPanelToPlayerFrame();
+        	Motus1V1Util.configureAndShowPlayerPresentFrame();
+        	Motus1V1Util.addWindowListenerToPlayerPresentFrame();
+        }
+        else if ((MotusVariable.is1V1==1)&&(MotusVariable.who1V1player==2)) {
+        	Motus1V1Util.score1V1Frame=Motus1V1Util.createScoreFrame1V1();
+        	Motus1V1Util.addScoreFrameComponents1V1();
+        	Motus1V1Util.configureAndShow1V1ScoreFrame();
+        }
+        else {
+        	createAndConfigureNextFrame();
+            addButtonsAndPanelToNextFrame();
+            configureAndShowNextFrame();
+            addWindowListenerToNextFrame();
+        }
     }
+    
+    
 
     private static void hideCurrentFrame() {
         messFrame.setVisible(false);
@@ -135,6 +151,8 @@ public class MotusGameFrameUtil {
         panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 60, 0));
         nextFrame.add(panel, BorderLayout.CENTER);
     }
+    
+    
 
     private static JPanel createButtonPanel() {
         JPanel panel = new JPanel(new GridBagLayout());
@@ -155,6 +173,8 @@ public class MotusGameFrameUtil {
         panel.setOpaque(false);
         return panel;
     }
+    
+    
 
     private static void configureAndShowNextFrame() {
         MotusFrameUtil.configureAndShowMessage(nextFrame, 600, 300);
@@ -183,19 +203,17 @@ public class MotusGameFrameUtil {
     		}
     	}
     }
+    
+    
+    
     public static void endGame(String imagePath) {
-        stopGameTimer();
-        
         messFrame = MotusFrameUtil.createEndFrame();
         setupEndFrame(imagePath);
         addComponentsToPanel();
         configureAndShowEndFrame();
     }
 
-    private static void stopGameTimer() {
-        TimerControls.cancelTimer();
-        TimerControls.purgeTimer();
-    }
+
 
     private static void setupEndFrame(String imagePath) {
         ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel(imagePath);
@@ -243,14 +261,22 @@ public class MotusGameFrameUtil {
     }
 
     public static void winGame() {
-    	TimerControls.cancelTimer();	
-    	addScore();
+    	TimerControls.cancelTimer();
+    	if (MotusVariable.is1V1==1) {
+    		Motus1V1Util.addScore1V1(1);
+    	}
+    	else {
+        	addScore();
+    	}
     	TimerControls.purgeTimer();
         endGame("res/images/bravo.jpeg");
     }
 
     public static void looseGame() {
     	TimerControls.cancelTimer();
+    	if (MotusVariable.is1V1==1) {
+    		Motus1V1Util.addScore1V1(0);
+    	}
     	TimerControls.purgeTimer();
         endGame("res/images/perdu.jpeg");
     }
@@ -260,6 +286,7 @@ public class MotusGameFrameUtil {
     	nextFrame.setVisible(false);
     	restartButtonClicked();
     }
+   
 		  
 	   	  
     public static void restartButtonClicked() {
@@ -269,7 +296,6 @@ public class MotusGameFrameUtil {
     	MotusFrame.gameFrame.setVisible(false);
     	TimerControls.cancelTimer();
     	TimerControls.purgeTimer();
-    	
 		MotusFrame.homeFrame = MotusHomeFrame.createHomeFrame();
 		MotusFrameUtil.configureAndShowFrame(MotusFrame.homeFrame, 960, 540);
     }

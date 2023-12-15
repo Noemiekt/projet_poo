@@ -16,15 +16,20 @@ public class MotusGameFrame {
 	
     public static JFrame createGameFrame() {
         JFrame gameFrame = new JFrame("Jeu Motus");
-        
         MotusVariable.nbEssai=0;
         
-        GameControlsBegin.initmotdebase();
-        System.out.print("le mot à trouver :" + MotusVariable.motAtrouver );
-        System.out.println();
+        if (MotusVariable.who1V1player==1) {
+        	GameControlsBegin.initmotdebase();
+            System.out.print("le mot à trouver :" + MotusVariable.motAtrouver );
+            System.out.println();
+            Tab.initTabVerification();
+        }
+        
+        else {
+        	Tab.initTabVerification2ndplayer();
+        }
         
         Tab.initTabInput();
-        Tab.initTabVerification();
         
         ImagePanel backgroundPanel = new ImagePanel("res/images/game.jpeg");
         gameFrame.setContentPane(backgroundPanel);      

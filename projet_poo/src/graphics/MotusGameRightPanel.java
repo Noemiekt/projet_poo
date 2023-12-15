@@ -47,7 +47,8 @@ public class MotusGameRightPanel {
         JButton buttonQuitter = MotusFrameUtil.createButton("Quitter", e -> System.exit(0));
         panel.add(buttonQuitter, gbc);
         
-        TimerControls gameTimer = new TimerControls(60, timerLabel); 
+        
+        TimerControls gameTimer = new TimerControls(60+30*(MotusVariable.nbLettre-4), timerLabel); 
 
         panel.setOpaque(false);
         panel.setPreferredSize(new Dimension(460, 520));

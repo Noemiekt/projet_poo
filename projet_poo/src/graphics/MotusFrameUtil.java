@@ -122,6 +122,32 @@ public class MotusFrameUtil {
         return nextFrame;
     }
     
+    public static JFrame createAnnouncePlayerFrame() {
+        JFrame nextFrame = new JFrame("Player "+MotusVariable.who1V1player);
+        nextFrame.setLayout(new BorderLayout());
+        
+        JPanel panel = new JPanel(new GridBagLayout());
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0, 0, 10, 0);
+        
+        gbc.gridy++;
+        JButton buttonRecommencer = MotusFrameUtil.createButton("Commencer", e -> MotusFrame.startGame());
+        panel.add(buttonRecommencer, gbc);
+
+
+        panel.setOpaque(false);
+        panel.setPreferredSize(new Dimension(460, 520));
+        
+        nextFrame.add(panel, BorderLayout.CENTER);
+        
+        return nextFrame;
+    }
+    
     
 }
 
