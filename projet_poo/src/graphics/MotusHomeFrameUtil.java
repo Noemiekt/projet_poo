@@ -148,7 +148,7 @@ public class MotusHomeFrameUtil {
         JPanel comboBoxPanelLang = new JPanel();
         comboBoxPanelLang.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-        String[] letterCounts = {"Français", "Anglais", "Espagnol"};
+        String[] letterCounts = {"Français", "Anglais", "Espagnol","Allemand"};
         letterComboBoxLang = new JComboBox<>(letterCounts);
         letterComboBoxLang.setSelectedIndex(0);
                

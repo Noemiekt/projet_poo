@@ -29,4 +29,6 @@ public class MotusFrame {
         MotusFrameUtil.configureAndShowFrame(gameFrame, 960, 540);
 
     } 
+    
+
 }

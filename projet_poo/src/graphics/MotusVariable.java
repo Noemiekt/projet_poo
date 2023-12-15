@@ -1,11 +1,8 @@
 package graphics;
 
 import java.awt.Color;
-import java.text.Normalizer;
 
 import javax.swing.JTextField;
-
-import controllers.Dictionnary;
 
 public class MotusVariable {
 	public static int nbLettre;
@@ -19,11 +16,5 @@ public class MotusVariable {
 	public static int[][] TabVerification=new int[7][MotusVariable.nbLettre];
 	public static String[][] TabScore=new String[1][2];
 	public static int indLangue;
-	public static int oneVone;
-    public static Dictionnary frenchdictionary = new Dictionnary("res/dictionary/french.txt");
-    public static Dictionnary englishdictionary = new Dictionnary("res/dictionary/eng.txt");
-    public static Dictionnary spanishdictionary = new Dictionnary("res/dictionary/esp.txt");
-   
-  	
-		
+	public static int oneVone;		
 }

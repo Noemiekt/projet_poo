@@ -27,21 +27,9 @@ public class GameControlsBegin{
 
 
 	public static void initmotdebase() {
-		switch (MotusVariable.indLangue) {
-        case 0:
-        	MotusVariable.motAtrouver = MotusVariable.frenchdictionary.selectRandomWord(MotusVariable.nbLettre);
-            break;
-        case 1:
-        	MotusVariable.motAtrouver = MotusVariable.englishdictionary.selectRandomWord(MotusVariable.nbLettre);
-            break;
-        case 2:
-        	MotusVariable.motAtrouver = MotusVariable.spanishdictionary.selectRandomWord(MotusVariable.nbLettre);
-            break;
-        default:
-        	MotusVariable.motAtrouver = MotusVariable.frenchdictionary.selectRandomWord(MotusVariable.nbLettre);
-            break;
-		}
+		Dictionnary.initDictionnary();
 		
+		MotusVariable.motAtrouver = Dictionnary.selectRandomWord(MotusVariable.nbLettre,MotusVariable.indLangue);
 		MotusVariable.motAtrouver = Normalizer.normalize(MotusVariable.motAtrouver, Normalizer.Form.NFD);
 		MotusVariable.motAtrouver = MotusVariable.motAtrouver.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
 		MotusVariable.motAtrouver = MotusVariable.motAtrouver.toUpperCase();	
