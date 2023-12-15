@@ -12,7 +12,7 @@ public class MotusIntroFrame {
         introFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         introFrame.setLayout(new BorderLayout());
 
-        ImagePanel backgroundPanel = createBackgroundPanel("res/intro.jpeg");
+        ImagePanel backgroundPanel = createBackgroundPanel("res/images/intro.jpeg");
         introFrame.setContentPane(backgroundPanel);
 
         addClickAction(introFrame);

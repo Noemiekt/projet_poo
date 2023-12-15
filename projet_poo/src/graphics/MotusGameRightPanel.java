@@ -1,5 +1,6 @@
 package graphics;
 
+import controllers.TimerControls;
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,15 +13,14 @@ public class MotusGameRightPanel {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0, 0, 10, 0); // Espacement en bas
-        
-        // Le timeur 
+        gbc.insets = new Insets(0, 0, 10, 0); 
+         
         JLabel timerLabel = new JLabel("00:00");
         timerLabel.setHorizontalAlignment(SwingConstants.CENTER);
         timerLabel.setForeground(MotusVariable.gold); 
         Font font = new Font("Impact", Font.BOLD, 25);
-        timerLabel.setFont(font); // Appliquez la police au label
-        panel.add(timerLabel, gbc); // Ajoutez timerLabel en premier
+        timerLabel.setFont(font);
+        panel.add(timerLabel, gbc); 
         
       
         gbc.gridy++;
@@ -47,7 +47,7 @@ public class MotusGameRightPanel {
         JButton buttonQuitter = MotusFrameUtil.createButton("Quitter", e -> System.exit(0));
         panel.add(buttonQuitter, gbc);
         
-        GameTimer gameTimer = new GameTimer(60, timerLabel); 
+        TimerControls gameTimer = new TimerControls(60, timerLabel); 
 
         panel.setOpaque(false);
         panel.setPreferredSize(new Dimension(460, 520));

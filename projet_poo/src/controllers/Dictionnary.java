@@ -32,7 +32,7 @@ public class Dictionnary {
     	}	
     }
     
-    static public String selectRandomWord(int wordLength) {
+    public String selectRandomWord(int wordLength) {
     	List<String> matchingWords = new ArrayList<>();
         for (String word : dictionary) {
             if (word.length() == wordLength) {

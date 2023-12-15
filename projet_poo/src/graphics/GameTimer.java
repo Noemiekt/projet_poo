@@ -7,47 +7,10 @@ import graphics.MotusIntroFrame.ImagePanel;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 public class GameTimer {
-	public static Timer timer;
-	public static int secondsRemaining;
-    JLabel timerLabel;
-    
-    public GameTimer() {
-    	secondsRemaining = 100;
-    }
-
-    
-    public GameTimer(int totalSeconds, JLabel label) {
-        secondsRemaining = totalSeconds;
-        this.timerLabel = label;
-        timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            public void run() {
-                updateLabel();
-                secondsRemaining--;
-                if ((secondsRemaining <= 0)&&(timer != null)) {
-                    timer.cancel();
-                    endTime();
-                }
-            }
-        }, 0, 1000);
-    }
-    
-    public static void cancelTimer() {
-        if (timer != null) {
-            timer.cancel();
-        }
-    }
-    
-    public static void purgeTimer() {
-        if (timer != null) {
-            timer.purge();
-        }
-    }
-    
+	
     public static void endTime() {
         stopAndPlayMusic();
         setupEndFrame();
@@ -57,13 +20,13 @@ public class GameTimer {
     }
 
     private static void stopAndPlayMusic() {
-        Music.stopMusic("./song.wav");
-        Music.playMusic("./justken.wav");
+        Music.stopMusic("res/musiques/song.wav");
+        Music.playMusic("res/musiques/justken.wav");
     }
 
     private static void setupEndFrame() {
         MotusGameFrameUtil.messFrame = MotusFrameUtil.createEndFrame();
-        ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/temps.jpeg");
+        ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/images/temps.jpeg");
         MotusGameFrameUtil.messFrame.setContentPane(backgroundPanel);
     }
 
@@ -98,12 +61,7 @@ public class GameTimer {
     }
 
     
-    private void updateLabel() {
-        int minutes = secondsRemaining / 60;
-        int seconds = secondsRemaining % 60;
-        String timeText = String.format("%02d:%02d", minutes, seconds);
-        SwingUtilities.invokeLater(() -> timerLabel.setText(timeText));
-    }
+    
 }
 
 

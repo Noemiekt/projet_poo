@@ -26,16 +26,18 @@ public class MotusGameFrame {
         Tab.initTabInput();
         Tab.initTabVerification();
         
-        ImagePanel backgroundPanel = new ImagePanel("res/game.jpeg");
+        ImagePanel backgroundPanel = new ImagePanel("res/images/game.jpeg");
         gameFrame.setContentPane(backgroundPanel);      
         gameFrame.setLayout(new BorderLayout());
        
         gameLeftPanel = MotusGameLeftPanel.UpdateLeftPanel();
         gameRightPanel = MotusGameRightPanel.createGameRightPanel(gameFrame);
+        
+        gameRightPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 50, 0));
 
         gameFrame.add(gameLeftPanel, BorderLayout.WEST);
         gameFrame.add(gameRightPanel, BorderLayout.EAST);
-
+        
         return gameFrame;
     }
 }

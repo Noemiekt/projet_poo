@@ -15,15 +15,15 @@ public class MotusFrame {
     }
     
     public static void home() {	
-    	Music.stopMusic("./song.wav");
-    	Music.playMusic("./home.wav");
+    	Music.stopMusic("res/musiques/song.wav");
+    	Music.playMusic("res/musiques/home.wav");
         homeFrame = MotusHomeFrame.createHomeFrame();
         MotusFrameUtil.configureAndShowFrame(homeFrame, 960, 540);
     }
 
     public static void startGame() {	
-    	Music.stopMusic("./home.wav");
-    	Music.playMusic("./song.wav");
+    	Music.stopMusic("res/musiques/home.wav");
+    	Music.playMusic("res/musiques/song.wav");
     	homeFrame.setVisible(false);
         gameFrame = MotusGameFrame.createGameFrame();
         MotusFrameUtil.configureAndShowFrame(gameFrame, 960, 540);

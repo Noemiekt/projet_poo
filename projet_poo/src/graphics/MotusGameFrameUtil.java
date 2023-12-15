@@ -48,7 +48,7 @@ public class MotusGameFrameUtil {
 	// Input error :
 	private static void handleInvalidInputError(int err) {
 		// Error message display
-	    Music.playMusic("./err.wav");
+	    Music.playMusic("res/musiques/err.wav");
 	    errorFrame = MotusFrameUtil.createErrorFrame();
 	    String imagePath = getImagePathBasedOnErrorCode(err);
 	    ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel(imagePath);
@@ -60,11 +60,11 @@ public class MotusGameFrameUtil {
 	private static String getImagePathBasedOnErrorCode(int err) {
 	    switch (err) {
 	        case 1:
-	            return "res/nonvalidelettre.jpeg";
+	            return "res/images/nonvalidelettre.jpeg";
 	        case 2:
-	            return "res/nonvalidelong.jpeg";
+	            return "res/images/nonvalidelong.jpeg";
 	        case 3:
-	            return "res/nonvalideprems.jpeg";
+	            return "res/images/nonvalideprems.jpeg";
 	        default:
 	            return "";
 	    }
@@ -91,12 +91,12 @@ public class MotusGameFrameUtil {
 	    MotusFrame.gameFrame.repaint();
 	
 	    if (motbon() == 0) {
-	        Music.playMusic("./yeah.wav");
+	        Music.playMusic("res/musiques//yeah.wav");
 	        winGame();
 	    }
 	
 	    if (MotusVariable.nbEssai == 7) {
-	        Music.playMusic("./nul.wav");
+	        Music.playMusic("res/musiques//nul.wav");
 	        looseGame();
 	    }
 	}
@@ -126,13 +126,14 @@ public class MotusGameFrameUtil {
 
     private static void createAndConfigureNextFrame() {
         nextFrame = MotusFrameUtil.createNextFrame();
-        ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/choix.jpeg");
+        ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/images/choix.jpeg");
         nextFrame.setContentPane(backgroundPanel);
     }
 
     private static void addButtonsAndPanelToNextFrame() {
         JPanel panel = createButtonPanel();
-        nextFrame.add(panel, BorderLayout.SOUTH);
+        panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 60, 0));
+        nextFrame.add(panel, BorderLayout.CENTER);
     }
 
     private static JPanel createButtonPanel() {
@@ -172,11 +173,11 @@ public class MotusGameFrameUtil {
     // Update the Score
     public static void addScore() {
     	if (MotusVariable.TabScore[0][1]==null) {
-    		int score=(7-MotusVariable.nbEssai)*MotusVariable.nbLettre*GameTimer.secondsRemaining;
+    		int score=(7-MotusVariable.nbEssai)*MotusVariable.nbLettre*TimerControls.secondsRemaining;
     		MotusVariable.TabScore[0][1]=Integer.toString(score);; 
     	}
     	else {
-    		int score=(7-MotusVariable.nbEssai)*MotusVariable.nbLettre*GameTimer.secondsRemaining;
+    		int score=(7-MotusVariable.nbEssai)*MotusVariable.nbLettre*TimerControls.secondsRemaining;
     		if (score>Integer.parseInt(MotusVariable.TabScore[0][1])) {
     			MotusVariable.TabScore[0][1]=Integer.toString(score);; 
     		}
@@ -192,8 +193,8 @@ public class MotusGameFrameUtil {
     }
 
     private static void stopGameTimer() {
-        GameTimer.cancelTimer();
-        GameTimer.purgeTimer();
+        TimerControls.cancelTimer();
+        TimerControls.purgeTimer();
     }
 
     private static void setupEndFrame(String imagePath) {
@@ -242,16 +243,16 @@ public class MotusGameFrameUtil {
     }
 
     public static void winGame() {
-    	GameTimer.cancelTimer();	
+    	TimerControls.cancelTimer();	
     	addScore();
-    	GameTimer.purgeTimer();
-        endGame("res/bravo.jpeg");
+    	TimerControls.purgeTimer();
+        endGame("res/images/bravo.jpeg");
     }
 
     public static void looseGame() {
-    	GameTimer.cancelTimer();
-    	GameTimer.purgeTimer();
-        endGame("res/perdu.jpeg");
+    	TimerControls.cancelTimer();
+    	TimerControls.purgeTimer();
+        endGame("res/images/perdu.jpeg");
     }
 
     
@@ -262,12 +263,12 @@ public class MotusGameFrameUtil {
 		  
 	   	  
     public static void restartButtonClicked() {
-    	Music.stopMusic("./justken.wav");
-    	Music.stopMusic("./song.wav");
-    	Music.playMusic("./home.wav");
+    	Music.stopMusic("res/musiques/justken.wav");
+    	Music.stopMusic("res/musiques/song.wav");
+    	Music.playMusic("res/musiques/home.wav");
     	MotusFrame.gameFrame.setVisible(false);
-    	GameTimer.cancelTimer();
-    	GameTimer.purgeTimer();
+    	TimerControls.cancelTimer();
+    	TimerControls.purgeTimer();
 		MotusFrame.homeFrame = MotusHomeFrame.createHomeFrame();
 		MotusFrameUtil.configureAndShowFrame(MotusFrame.homeFrame, 960, 540);
     }

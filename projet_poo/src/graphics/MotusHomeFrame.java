@@ -13,13 +13,13 @@ public class MotusHomeFrame {
         JFrame frame = new JFrame("Accueil");
         frame.setLayout(new BorderLayout());
 
-        ImagePanel backgroundPanel = new ImagePanel("res/home.jpeg");
+        ImagePanel backgroundPanel = new ImagePanel("res/images/home.jpeg");
         frame.setContentPane(backgroundPanel);
 
         JPanel mainPanel = MotusHomeFrameUtil.createMainPanel();
 
         frame.setLayout(new BorderLayout());
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 50, 0));
         frame.add(mainPanel, BorderLayout.SOUTH);
 
         return frame;

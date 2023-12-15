@@ -67,7 +67,7 @@ public class MotusHomeFrameUtil {
 
 	private static JFrame createScoreFrame() {
 	    JFrame scoreFrame = new JFrame("Score");
-	    ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/score.jpeg");
+	    ImagePanel backgroundPanel = MotusIntroFrame.createBackgroundPanel("res/images/score.jpeg");
 	    scoreFrame.setContentPane(backgroundPanel);
 	    return scoreFrame;
 	}
