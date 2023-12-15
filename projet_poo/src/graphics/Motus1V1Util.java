@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import controllers.MotusVariable;
 import controllers.TimerControls;
 import graphics.MotusIntroFrame.ImagePanel;
 

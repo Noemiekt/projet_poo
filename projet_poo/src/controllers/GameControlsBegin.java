@@ -3,7 +3,6 @@ package controllers;
 
 import java.util.Random;
 import java.text.Normalizer;
-import graphics.MotusVariable;
 
 public class GameControlsBegin{
 	

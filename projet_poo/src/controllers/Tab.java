@@ -1,7 +1,6 @@
-package graphics;
+package controllers;
 
-import controllers.GameControlsBegin;
-import controllers.GamesControls;
+import graphics.MotusGameFrameUtil;
 
 
 public class Tab  {

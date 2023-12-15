@@ -1,5 +1,6 @@
 package graphics;
 
+import controllers.MotusVariable;
 import controllers.TimerControls;
 import javax.swing.*;
 import java.awt.*;

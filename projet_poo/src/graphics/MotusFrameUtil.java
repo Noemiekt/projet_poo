@@ -2,6 +2,7 @@ package graphics;
 
 import javax.swing.*;
 
+import controllers.MotusVariable;
 
 import java.awt.*;
 import java.awt.event.ActionListener;

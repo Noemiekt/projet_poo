@@ -1,4 +1,4 @@
-package graphics;
+package controllers;
 
 import java.awt.Color;
 

@@ -2,6 +2,8 @@ package graphics;
 
 import javax.swing.*;
 
+import controllers.MotusVariable;
+
 public class MotusFrame {
 	public static JFrame introFrame;
     public static JFrame homeFrame;

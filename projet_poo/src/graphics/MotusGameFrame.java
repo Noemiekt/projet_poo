@@ -5,6 +5,8 @@ import javax.swing.*;
 import graphics.MotusIntroFrame.ImagePanel;
 
 import controllers.GameControlsBegin;
+import controllers.MotusVariable;
+import controllers.Tab;
 
 import java.awt.*;
 
