@@ -39,6 +39,21 @@ public class MotusGameLeftPanel {
         setPanelProperties(panel);
         return panel;
     }
+    
+    public static JPanel erraseLeftPanel() {
+        JPanel panel = createPanel();
+
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < MotusVariable.nbLettre; j++) {
+                JLabel cellLabel = MotusFrameUtil.createEmptyCellLabel();
+                cellLabel.setBackground(Color.WHITE);
+                panel.add(cellLabel);
+            }
+        }
+
+        setPanelProperties(panel);
+        return panel;
+    }
 
     private static JPanel createPanel() {
         JPanel panel = new JPanel(new GridLayout(7, MotusVariable.nbLettre));
