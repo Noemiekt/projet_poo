@@ -10,7 +10,7 @@ public class MotusFrame {
     public static JFrame gameFrame;
     public static JFrame scoreFrame;
     
-    public static void main(String[] args) {
+    public static void intro() {
     	MotusVariable.TabScore[0][0]="Meilleur Score";
     	MotusVariable.Tab1V1[0][0]="Joueur 1";
     	MotusVariable.Tab1V1[0][2]="Joueur 2";
