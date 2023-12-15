@@ -44,3 +44,6 @@ Implémente les différents effets sonores du jeux, notamment :
 
 - Le menu principal propose un onglet `Score` dans lequel le meilleur score du joueur peut être consulté après avoir réalisé plusieurs parties.
 - A des fins de *DEBUG*, le mot à deviner est affiché dans la console.
+
+
+Pour un détail complet du déroulement du jeu, veuillez consulter le fichier "explication.pdf" inclus dans ce répertoire.
