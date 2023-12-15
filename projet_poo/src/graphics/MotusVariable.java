@@ -4,6 +4,8 @@ import java.awt.Color;
 
 import javax.swing.JTextField;
 
+import controllers.Dictionnary;
+
 public class MotusVariable {
 	public static int nbLettre;
 	public static String userInput;
@@ -17,5 +19,9 @@ public class MotusVariable {
 	public static String[][] TabScore=new String[1][2];
 	public static int indLangue;
 	public static int oneVone;
+    public static Dictionnary frenchdictionary = new Dictionnary("res/dictionary/frenchDictionary.txt");
+    public static Dictionnary englishdictionary = new Dictionnary("res/dictionary/englishDictionary.txt");
+    public static Dictionnary spanishdictionary = new Dictionnary("res/dictionary/spanishDictionary.txt");
+   
 	
 }

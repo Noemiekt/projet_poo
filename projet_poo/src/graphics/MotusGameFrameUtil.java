@@ -269,6 +269,7 @@ public class MotusGameFrameUtil {
     	MotusFrame.gameFrame.setVisible(false);
     	TimerControls.cancelTimer();
     	TimerControls.purgeTimer();
+    	
 		MotusFrame.homeFrame = MotusHomeFrame.createHomeFrame();
 		MotusFrameUtil.configureAndShowFrame(MotusFrame.homeFrame, 960, 540);
     }

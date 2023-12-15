@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.Color;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -89,6 +90,7 @@ public class MotusHomeFrameUtil {
 	private static void addLabelsToScorePanel(JPanel panel) {  
 	    for (int i = 0; i < 2; i++) {
 	        JLabel cellLabel = createScoreCellLabel(i);
+	        cellLabel.setBackground(Color.WHITE);
 	        panel.add(cellLabel);
 	    }
 	}
@@ -98,7 +100,7 @@ public class MotusHomeFrameUtil {
 	    JLabel cellLabel = MotusFrameUtil.createEmptyCellLabel();
 	    
 	    if (MotusVariable.TabScore[0][index] != null) {
-	        cellLabel.setOpaque(false);
+	    	cellLabel.setBackground(Color.WHITE);
 	        cellLabel.setFont(customFont);
 	        cellLabel.setForeground(MotusVariable.rose);
 	        cellLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -143,7 +145,7 @@ public class MotusHomeFrameUtil {
         JPanel comboBoxPanelLang = new JPanel();
         comboBoxPanelLang.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-        String[] letterCounts = {"Français", "Anglais", "Allemand"};
+        String[] letterCounts = {"Français", "Anglais", "Espagnol"};
         letterComboBoxLang = new JComboBox<>(letterCounts);
         letterComboBoxLang.setSelectedIndex(0);
                

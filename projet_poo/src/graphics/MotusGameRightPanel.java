@@ -31,7 +31,7 @@ public class MotusGameRightPanel {
         gbc.gridy++;
         MotusVariable.userInputField = new JTextField();
         MotusVariable.userInputField.setHorizontalAlignment(JTextField.CENTER);
-        MotusVariable.userInputField.setColumns(20); // Ajustez le nombre de colonnes selon vos besoins
+        MotusVariable.userInputField.setColumns(20); 
         MotusVariable.userInputField.setMaximumSize(new Dimension(300, MotusFrameUtil.createButton("Validé", e -> {}).getPreferredSize().height));
         panel.add(MotusVariable.userInputField, gbc);
 
