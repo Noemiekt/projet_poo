@@ -95,6 +95,8 @@ public class Motus1V1Util {
             @Override
             public void windowClosing(WindowEvent e) {
             	playerPresentFrame.setVisible(false);
+            	MotusVariable.who1V1player=1;
+	        	MotusVariable.is1V1=0;
                 MotusFrame.startGame();
             }
         });

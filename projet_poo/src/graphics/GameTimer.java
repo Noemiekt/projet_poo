@@ -12,6 +12,7 @@ import java.awt.event.WindowEvent;
 public class GameTimer {
 	
     public static void endTime() {
+    	MotusGameLeftPanel.erraseLeftPanel();
     	Motus1V1Util.addScore1V1(0);
         stopAndPlayMusic();
         setupEndFrame();

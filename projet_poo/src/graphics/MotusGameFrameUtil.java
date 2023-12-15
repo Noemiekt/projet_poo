@@ -91,14 +91,26 @@ public class MotusGameFrameUtil {
 	    MotusFrame.gameFrame.repaint();
 	
 	    if (motbon() == 0) {
-	        Music.playMusic("res/musiques//yeah.wav");
+	    	erraseTab();
+	        Music.playMusic("res/musiques/yeah.wav");
 	        winGame();
 	    }
 	
 	    if (MotusVariable.nbEssai == 7) {
-	        Music.playMusic("res/musiques//nul.wav");
+	        Music.playMusic("res/musiques/nul.wav");
+	        erraseTab();
 	        looseGame();
 	    }
+	}
+	
+	public static void erraseTab() {
+		MotusFrame.gameFrame.remove(MotusGameFrame.gameLeftPanel);
+	    MotusGameFrame.gameLeftPanel = MotusGameLeftPanel.erraseLeftPanel();
+	
+	    MotusFrame.gameFrame.add(MotusGameFrame.gameLeftPanel, BorderLayout.WEST);
+	
+	    MotusFrame.gameFrame.revalidate();
+	    MotusFrame.gameFrame.repaint();
 	}
 
     // Check that user input is the correct word
@@ -185,6 +197,8 @@ public class MotusGameFrameUtil {
             @Override
             public void windowClosing(WindowEvent e) {
                 nextFrame.setVisible(false);
+                MotusVariable.who1V1player=1;
+	        	MotusVariable.is1V1=0;
                 MotusFrame.home();
             }
         });
@@ -255,6 +269,8 @@ public class MotusGameFrameUtil {
             @Override
             public void windowClosing(WindowEvent e) {
                 messFrame.setVisible(false);
+                MotusVariable.who1V1player=1;
+	        	MotusVariable.is1V1=0;
                 MotusFrame.home();
             }
         });
@@ -283,6 +299,8 @@ public class MotusGameFrameUtil {
 
     
     public static void closeAndRestart() {
+    	MotusVariable.who1V1player=1;
+    	MotusVariable.is1V1=0;
     	nextFrame.setVisible(false);
     	restartButtonClicked();
     }
@@ -293,6 +311,8 @@ public class MotusGameFrameUtil {
     	Music.stopMusic("res/musiques/justken.wav");
     	Music.stopMusic("res/musiques/song.wav");
     	Music.playMusic("res/musiques/home.wav");
+    	MotusVariable.who1V1player=1;
+    	MotusVariable.is1V1=0;
     	MotusFrame.gameFrame.setVisible(false);
     	TimerControls.cancelTimer();
     	TimerControls.purgeTimer();
